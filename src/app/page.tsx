@@ -1,5 +1,6 @@
 'use client';
 
+import { allPosts } from '@/contentlayer/generated';
 import { styled } from 'styled-components';
 
 const Container = styled.div`
@@ -7,5 +8,12 @@ const Container = styled.div`
 `;
 
 export default function Home() {
-  return <Container>hello</Container>;
+  console.log(allPosts);
+  return (
+    <Container>
+      {allPosts.map((post) => (
+        <div>{post.title}</div>
+      ))}
+    </Container>
+  );
 }
