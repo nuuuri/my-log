@@ -1,19 +1,29 @@
-'use client';
-
+import PostCard from '@/components/PostCard';
 import { allPosts } from '@/contentlayer/generated';
-import { styled } from 'styled-components';
+import { Roboto_Condensed } from 'next/font/google';
 
-const Container = styled.div`
-  background: pink;
-`;
+const roboto = Roboto_Condensed({
+  subsets: ['latin'],
+  weight: ['300', '400', '700'],
+});
 
 export default function Home() {
-  console.log(allPosts);
+  const posts = allPosts.sort((a, b) => -a.date.localeCompare(b.date));
+
   return (
-    <Container>
-      {allPosts.map((post) => (
-        <div>{post.title}</div>
-      ))}
-    </Container>
+    <div>
+      {/*  <div className="h-96 bg-slate-200" /> */}
+      <div className="p-10 ">
+        <div
+          className={`${roboto.className} font-bold text-xl text-zinc-700 tracking-wider cursor-default`}>
+          RECENT POSTS
+        </div>
+        <div className="flex flex-col gap-12 py-4">
+          {posts.map((post) => (
+            <PostCard key={post._id} post={post} />
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
