@@ -1,4 +1,5 @@
 import { Post } from '@/contentlayer/generated';
+import moment from 'moment';
 import { Roboto_Condensed } from 'next/font/google';
 import Link from 'next/link';
 import tw from 'tailwind-styled-components';
@@ -33,12 +34,6 @@ const Tag = tw.div`
 `;
 
 export default function PostCard({ post }: { post: Post }) {
-  const getDateString = () => {
-    const dateList = new Date(post.date).toDateString().split(' ');
-
-    return `${dateList[1].toLocaleUpperCase()} ${dateList[2]}, ${dateList[3]}`;
-  };
-
   return (
     <div>
       <div
@@ -50,7 +45,7 @@ export default function PostCard({ post }: { post: Post }) {
           {post.title}
         </div>
         <div className="flex gap-8 text-sm text-zinc-400">
-          <div className="">{getDateString()}</div>
+          <div className="">{moment(post.date).format('MMM DD, YYYY')}</div>
           <Comment>0 comments</Comment>
         </div>
         <div className="my-5 font-medium text-zinc-500">{post.description}</div>
