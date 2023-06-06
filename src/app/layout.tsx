@@ -1,7 +1,7 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 import StyledRegistry from '@/lib/StyledRegistry';
-import LNB from './LNB';
+import LNB from '@/components/LNB';
 
 const inter = Inter({ subsets: ['latin'] });
 
