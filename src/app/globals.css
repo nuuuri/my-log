@@ -4,19 +4,34 @@
 
 @layer base {
   h1 {
-    @apply font-mono text-2xl font-bold;
+    @apply mt-5 mb-3 text-2xl font-bold;
   }
   h2 {
-    @apply font-mono text-xl font-bold;
+    @apply mt-5 mb-3 text-xl font-bold;
   }
   h3 {
-    @apply font-mono text-lg font-semibold;
+    @apply mt-5 mb-3 text-lg font-semibold;
   }
+
+  p {
+    @apply my-3 whitespace-pre-wrap;
+  }
+  p > code {
+    @apply px-1.5 py-0.5 rounded bg-stone-100 font-semibold text-red-400 text-sm;
+  }
+  pre {
+    @apply my-3 p-10 rounded-sm bg-stone-100;
+  }
+
   ul {
-    @apply list-inside list-disc;
+    @apply my-3 list-inside list-disc;
   }
   ol {
-    @apply list-inside list-decimal;
+    @apply my-3 list-inside list-decimal;
+  }
+
+  hr {
+    @apply my-5;
   }
 }
 

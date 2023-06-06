@@ -17,10 +17,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} flex w-screen h-screen`}>
+      <body
+        className={`${inter.className} flex w-screen h-screen overflow-hidden`}>
         <StyledRegistry>
           <LNB />
-          <div className="absolute inset-0 ml-80">{children}</div>
+          <div className="absolute inset-0 ml-80 overflow-y-auto">
+            {children}
+          </div>
         </StyledRegistry>
       </body>
     </html>

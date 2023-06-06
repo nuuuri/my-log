@@ -50,7 +50,7 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
-          theme: 'github-dark', // 코드작성시 적용할 테마
+          theme: 'github-light', // 코드작성시 적용할 테마
         },
       ],
       highlight,
