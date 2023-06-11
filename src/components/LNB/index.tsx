@@ -23,8 +23,8 @@ export default function LNB() {
         Blog Project With Next.js
       </div>
       <Menu href="/">Home</Menu>
-      <Menu href="/">Category</Menu>
-      <Menu href="/">Tags</Menu>
+      <Menu href="/category">Category</Menu>
+      <Menu href="/tag">Tags</Menu>
       <Menu href="/">About</Menu>
       <Menu href="https://github.com/nuuuri">Github</Menu>
       <div className="h-32" />

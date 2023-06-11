@@ -49,7 +49,7 @@ export default function PostDetail({
           <Link
             key={tag}
             className={`${poppins.className} text-sm tracking-wide hover:text-orange-400`}
-            href={`/tag/${tag}`}>
+            href={`/tag/${tag.toLocaleLowerCase()}`}>
             #{tag}
           </Link>
         ))}
