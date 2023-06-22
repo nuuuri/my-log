@@ -1,0 +1,15 @@
+---
+title: MobX 비동기 처리
+description: MobX에서의 비동기 처리 알아보기
+category: React
+date: 2023-06-13
+tags: ['Frontend', 'React', 'Javascript', 'Typescript']
+---
+
+- mobX에서 `observable` 변수를 변경하기 위해서는 `action`을 사용해야 함
+
+- `action`은 첫번째 `await` 코드까지만 `action`이 적용됨
+
+- `action`은 현재 실행 중인 함수에서만 적용됨 (스케줄링된 함수에는 적용되지 않음)
+
+- test
