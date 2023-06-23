@@ -19,15 +19,21 @@
   p > code {
     @apply px-1.5 py-0.5 rounded bg-stone-100 font-semibold text-red-400 text-sm;
   }
+
   pre {
     @apply my-3 p-10 rounded-sm bg-stone-100;
   }
 
   ul {
-    @apply my-3 list-inside list-disc;
+    @apply ml-5 my-3 list-disc;
   }
+  li > ul {
+    @apply ml-5 my-3;
+    list-style-type: circle;
+  }
+
   ol {
-    @apply my-3 list-inside list-decimal;
+    @apply ml-5 my-3 list-decimal;
   }
 
   hr {
