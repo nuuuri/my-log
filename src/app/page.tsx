@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
     <div>
-      {/*  <div className="h-96 bg-slate-200" /> */}
+      <div className="h-96 bg-slate-200" />
       <div className="p-10 ">
         <div
           className={`${roboto.className} font-bold text-xl text-zinc-700 tracking-wider cursor-default`}>

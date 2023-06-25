@@ -26,9 +26,7 @@ export default function PostDetail({
         {'>'}
         <Link href="/category">Category</Link>
         {'>'}
-        <Link
-          className="text-orange-400"
-          href={post.category.toLocaleLowerCase()}>
+        <Link className="text-orange-400" href={`/category/${post.category}`}>
           {post.category}
         </Link>
       </div>

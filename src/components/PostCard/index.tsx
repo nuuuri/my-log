@@ -37,7 +37,7 @@ export default function PostCard({ post }: { post: Post }) {
   return (
     <div>
       <Link
-        href={`/category/${post.category.toLocaleLowerCase()}`}
+        href={`/category/${post.category}`}
         className={`${roboto.className} text-orange-400 tracking-widest cursor-pointer`}>
         {post.category}
       </Link>
