@@ -21,7 +21,8 @@ export default function CategoryList() {
             <div
               key={category}
               className={`${roboto.className} font-bold text-xl text-zinc-700 tracking-wider cursor-pointer`}
-              onClick={() => setSelected(category)}>
+              onClick={() => setSelected(category)}
+              aria-hidden="true">
               {category}
             </div>
           ))
