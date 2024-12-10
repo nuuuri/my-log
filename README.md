@@ -1,4 +1,4 @@
-# Next-Template
+# Next-Template (with Yarn Berry)
 
 - **Next.js 15 (App Router)** 프로젝트 템플릿
 - ESLint 적용 (`@rushstack/eslint-config`)
@@ -8,8 +8,7 @@
 ## 환경
 
 - node : v20.16.0
-- npm : 10.8.1
-- yarn : 1.22.22
+- yarn : 4.5.3
 
 ## 시작하기
 
@@ -19,11 +18,10 @@ $ cp git_pre/commit-msg ./.git/hooks
 
 # 2. 의존성 패키지 일괄 설치
 $ yarn install
-# or npm install
+$ yarn dlx @yarnpkg/sdks vscode
 
 # 3. 스크립트 실행
 $ yarn dev
-# or npm run dev
 ```
 
 ## 폴더 구조
