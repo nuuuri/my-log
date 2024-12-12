@@ -13,6 +13,10 @@ export default {
         foreground: 'var(--foreground)',
       },
     },
+    fontFamily: {
+      poppins: ['var(--font-poppins)', 'sans-serif'],
+      roboto: ['var(--font-roboto)', 'sans-serif'],
+    },
   },
   plugins: [require('@tailwindcss/typography')],
 } satisfies Config;
