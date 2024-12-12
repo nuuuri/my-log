@@ -10,7 +10,7 @@ interface PostMetadata {
   title: string;
   description: string;
   tags: string[];
-  date: string;
+  date: Date;
 }
 
 export interface PostData {
