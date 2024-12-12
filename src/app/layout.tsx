@@ -1,18 +1,7 @@
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
 
-import '../styles/globals.css';
-
-const geistSans = localFont({
-  src: '../styles/fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-});
-const geistMono = localFont({
-  src: '../styles/fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
-});
+import '@/styles/globals.css';
+import { notosans, poppins, roboto } from '@/styles/fonts';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {
@@ -28,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        className={`${notosans.className} ${poppins.variable} ${roboto.variable} antialiased`}>
         {children}
       </body>
     </html>
