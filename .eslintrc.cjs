@@ -102,6 +102,31 @@ module.exports = {
             group: 'internal',
             position: 'after',
           },
+          {
+            pattern: '@/stores/*',
+            group: 'internal',
+            position: 'after',
+          },
+          {
+            pattern: '@/styles/*',
+            group: 'internal',
+            position: 'after',
+          },
+          {
+            pattern: '@/types/*',
+            group: 'internal',
+            position: 'after',
+          },
+          {
+            pattern: '@/utils/*',
+            group: 'internal',
+            position: 'after',
+          },
+          {
+            pattern: '@/posts/*',
+            group: 'internal',
+            position: 'after',
+          },
         ],
         'newlines-between': 'always',
         pathGroupsExcludedImportTypes: [],
