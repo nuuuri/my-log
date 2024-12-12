@@ -13,14 +13,11 @@
 ## 시작하기
 
 ```bash
-# 1. git hook commit-msg 설정
-$ cp git_pre/commit-msg ./.git/hooks
-
-# 2. 의존성 패키지 일괄 설치
+# 1. 의존성 패키지 일괄 설치
 $ yarn install
 $ yarn dlx @yarnpkg/sdks vscode
 
-# 3. 스크립트 실행
+# 2. 스크립트 실행
 $ yarn dev
 ```
 
