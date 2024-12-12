@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 
 import '@/styles/globals.css';
-import { notosans, poppins, roboto } from '@/styles/fonts';
 
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
+
+import { notosans, poppins, roboto } from '@/styles/fonts';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {
