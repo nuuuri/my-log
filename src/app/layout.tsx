@@ -3,6 +3,10 @@ import type { Metadata } from 'next';
 import '@/styles/globals.css';
 import { notosans, poppins, roboto } from '@/styles/fonts';
 
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import Sidebar from '@/components/Sidebar';
+
 // eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -18,7 +22,14 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${notosans.className} ${poppins.variable} ${roboto.variable} antialiased`}>
-        {children}
+        <div className="w-screen h-screen">
+          <Header />
+          <main className="relative h-[calc(100%_-_56px)] pb-14 overflow-x-hidden">
+            {children}
+          </main>
+          <Footer />
+          <Sidebar />
+        </div>
       </body>
     </html>
   );
