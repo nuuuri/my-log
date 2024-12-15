@@ -16,6 +16,8 @@ export default {
     fontFamily: {
       poppins: ['var(--font-poppins)', 'sans-serif'],
       roboto: ['var(--font-roboto)', 'sans-serif'],
+      nanumGothic: ['var(--font-nanum-gothic)', 'sans-serif'],
+      gothicA1: ['var(--font-gothic-a1)', 'sans-serif'],
     },
   },
   plugins: [require('@tailwindcss/typography')],

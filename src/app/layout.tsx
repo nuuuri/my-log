@@ -6,7 +6,13 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
 
-import { notosans, poppins, roboto } from '@/styles/fonts';
+import {
+  gothicA1,
+  nanumGothic,
+  notosans,
+  poppins,
+  roboto,
+} from '@/styles/fonts';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {
@@ -22,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${notosans.className} ${poppins.variable} ${roboto.variable} antialiased`}>
+        className={`${notosans.className} ${poppins.variable} ${roboto.variable} ${nanumGothic.variable} ${gothicA1.variable} antialiased`}>
         <div className="w-screen h-screen">
           <Header />
           <main className="relative h-[calc(100%_-_56px)] pb-14 overflow-x-hidden">

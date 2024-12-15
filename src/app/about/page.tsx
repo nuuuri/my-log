@@ -1,82 +1,77 @@
-import { ReactNode } from 'react';
+import Contact from '@/components/resume/Contact';
+import Introduce from '@/components/resume/Introduce';
+import List from '@/components/resume/List';
+import Project from '@/components/resume/Project';
+import Title from '@/components/resume/Title';
 
 export default function AboutPage() {
   return (
-    <div className="w-full !max-w-full p-20">
-      <p className="text-3xl font-extrabold tracking-wider">
-        박윤수 | Yunsoo Park
-      </p>
-      <ul className="list-disc pl-5">
-        <li>
-          4년차 프론트엔드 개발자로,{' '}
-          <BoldUnderline>프론트엔드 개발 팀장</BoldUnderline>
-          으로서의 경험이 있습니다.
-        </li>
-        <li>
-          주도적으로 일하며 <BoldUnderline>책임감이 강하다</BoldUnderline>
-          라는 말을 자주 듣습니다.
-        </li>
-        <li>
-          <BoldUnderline>사용자 중심의 서비스</BoldUnderline>를 제공하기 위하여
-          노력합니다.
-        </li>
-        <li>
-          다양한 직무의 사람들과 <BoldUnderline>소통하며 협업</BoldUnderline>
-          하는 것을 즐깁니다.
-        </li>
-      </ul>
-      <div>
-        <div>1997.03.21</div>
-        <div>sbfl125@gmail.com</div>
-      </div>
-      <Title># S K I L L</Title>
-      <Title># E X P E R I E N C E</Title>
-      <Title># P R O J E C T</Title>
+    <div className="p-20 mx-auto tracking-wide max-w-7xl font-gothicA1">
+      <p className="text-4xl font-bold tracking-widest">박윤수</p>
+      <p className="text-2xl">Frontend Engineer</p>
+      <Introduce />
+      <Contact />
+      <Title>skill</Title>
+      <Title>experience</Title>
+      <Title>project</Title>
       <Project
-        title="2025년 AI 디지털교과서 개발"
-        startDate="2024.05"
+        company="(주)티맥스알지"
+        description="2025년 도입되는 AI 디지털교과서의 영어, 수학 평가지 문항 콘텐츠를 개발하였습니다.<br/>발행사와 SI업체 등 대규모 협업하여 수행하였으며, 약 80,000여개의 문항 콘텐츠 앱을 생산하였습니다."
         endDate="2024.09"
-        description="2025년 도입되는 AI 디지털교과서의 영어, 수학 평가지 문항 콘텐츠를 개발하였습니다.\n 발행사와 SI업체 등 대규모 협업하여 수행하였으며, 약 80,000여개의 문항 콘텐츠 앱을 생산하였습니다."
-      />
-      <Title># A W A R D</Title>
-      <Title># E D U C A T I O N</Title>
+        startDate="2024.05"
+        title="2025년 AI 디지털교과서 개발">
+        <List
+          data={[
+            {
+              text: '문항 콘텐츠 프로젝트 관리 및 개발 총괄',
+              children: [
+                { text: '고객사(발행사), 협업사와 소통 및 업무 대응' },
+                {
+                  text: '약 10만 개의 EBS 문항 데이터 분석 및 문항 콘텐츠 구조 설계',
+                },
+                {
+                  text: '파트별 업무 분배 및 일정 관리를 통한 문항 콘텐츠 앱 양산 관리 (약 80,000개 양산 완료)',
+                },
+              ],
+            },
+            {
+              text: '공통 컴포넌트 설계 및 개발',
+              children: [
+                { text: '웹 접근성을 고려한 컴포넌트 개발' },
+                {
+                  text: '텍스트 에디터 개발',
+                  children: [
+                    { text: '사내 프레임워크 연동을 위한 WYSIWYG 에디터 개발' },
+                    { text: 'Latex to MathML 변환 기능 구현' },
+                  ],
+                },
+              ],
+            },
+            {
+              text: '수학 주관식 문항 템플릿 설계 및 개발',
+              children: [
+                { text: 'LaTex 문법을 지원하는 초중고 수식입력기 개발' },
+                { text: '동일 수식 판별 로직 구현 및 채점 기능 개발' },
+              ],
+            },
+            {
+              text: '문항 콘텐츠 앱 저작도구 개발',
+              children: [
+                {
+                  text: '사내 프레임워크 기반 Low Code 문항 콘텐츠 앱 저작도구 개발',
+                },
+                {
+                  text: '사내 프레임워크 연동을 위한 자체 번들러 개발 및 팀 내 적용',
+                },
+                { text: '클라우드 서비스 보안 인증(CSAP) 대응' },
+              ],
+            },
+            { text: '' },
+          ]}
+        />
+      </Project>
+      <Title>award</Title>
+      <Title>education</Title>
     </div>
-  );
-}
-
-function BoldUnderline(props: { children: string }) {
-  return (
-    <span className="font-bold underline underline-offset-4">
-      {props.children}
-    </span>
-  );
-}
-
-function Title(props: { children: string }) {
-  return (
-    <p className="w-full mt-5 mb-2 pb-2 border-b border-zinc-300 font-semibold text-2xl text-indigo-500 tracking-wide">
-      {props.children}
-    </p>
-  );
-}
-
-function Project(props: {
-  title: string;
-  startDate: string;
-  endDate: string;
-  description?: string;
-  children?: ReactNode;
-}) {
-  return (
-    <>
-      <div className="flex justify-between items-center">
-        <p className="font-bold text-xl tracking-wide">{props.title}</p>
-        <p className="text-zinc-500">
-          {props.startDate} ~ {props.endDate}
-        </p>
-      </div>
-      <p className="whitespace-pre-wrap">{props.description}</p>
-      {props.children}
-    </>
   );
 }
