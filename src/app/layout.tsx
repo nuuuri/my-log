@@ -1,10 +1,15 @@
 import type { Metadata } from 'next';
 
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+
 import '@/styles/globals.css';
 
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
+
+dayjs.extend(utc);
 
 import {
   gothicA1,
