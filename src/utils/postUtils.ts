@@ -6,17 +6,7 @@ import { notFound } from 'next/navigation';
 import { sync } from 'glob';
 import matter from 'gray-matter';
 
-interface PostMetadata {
-  title: string;
-  description: string;
-  tags: string[];
-  date: Date;
-}
-
-export interface PostData {
-  slug: string;
-  metadata: PostMetadata;
-}
+import { PostMetadata } from '@/types/Post';
 
 const getFilePath = (slug: string) =>
   path.join(process.cwd(), 'src', 'posts', `${slug}.mdx`);

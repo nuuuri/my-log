@@ -9,7 +9,7 @@ import {
 export default async function PostPage({
   params,
 }: {
-  params: Promise<{ slug: string; post: string }>;
+  params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
   const { metadata } = await getPostMetadata(slug);
