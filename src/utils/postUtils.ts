@@ -47,7 +47,10 @@ export const getPostMetadata = async (slug: string) => {
       throw new Error(`Post not found: ${slug}`);
     }
 
-    const metadata = parseMetadata(content);
+    const categories = slug.split('/');
+    categories.pop(); // 파일명 제거
+
+    const metadata = { ...parseMetadata(content), category: categories };
 
     return {
       slug,
@@ -61,7 +64,7 @@ export const getPostMetadata = async (slug: string) => {
 
 export const getAllPostsMetadata = async () => {
   try {
-    const fileNames = sync('src/posts/*.mdx');
+    const fileNames = sync('src/posts/**/*.mdx');
 
     const posts = await Promise.all(
       fileNames.map(async (fileName) => {

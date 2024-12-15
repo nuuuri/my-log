@@ -9,13 +9,13 @@ import {
 export default async function PostPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string[] }>;
 }) {
   const { slug } = await params;
-  const { metadata } = await getPostMetadata(slug);
+  const { metadata } = await getPostMetadata(slug.join('/'));
 
   const title = `${metadata.title ?? ''}`;
-  const content = getPostContent(slug);
+  const content = getPostContent(slug.join('/'));
 
   return (
     <article className="prose">
@@ -28,9 +28,7 @@ export default async function PostPage({
 // eslint-disable-next-line react-refresh/only-export-components
 export async function generateStaticParams() {
   const allPosts = await getAllPostsMetadata();
-  const postStaticParams = allPosts.map((post) => ({
-    slug: post.slug,
+  return allPosts.map((post) => ({
+    slug: post.slug.split('/'),
   }));
-
-  return postStaticParams;
 }
