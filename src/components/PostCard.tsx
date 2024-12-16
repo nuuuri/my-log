@@ -14,9 +14,9 @@ export default function PostCard({ post }: PostCardProps) {
 
   return (
     <Link
-      className="flex flex-col w-full px-2 py-4 border-b hover:bg-zinc-100 border-zinc-200 last:border-none"
+      className="flex flex-col w-full px-2 py-4 border-b hover:bg-zinc-100 hover:dark:bg-zinc-900 border-zinc-200 last:border-none"
       href={post.slug}>
-      <span className="text-sm text-orange-400">{category.join('/')}</span>
+      <span className="text-sm text-point">{category.join('/')}</span>
       <div className="flex justify-between">
         <span className="text-lg">{title}</span>
         <span className="text-sm text-zinc-400">

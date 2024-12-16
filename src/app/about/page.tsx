@@ -6,9 +6,9 @@ import Title from '@/components/resume/Title';
 
 export default function AboutPage() {
   return (
-    <div className="p-20 mx-auto tracking-wide max-w-7xl font-gothicA1">
-      <p className="text-4xl font-bold tracking-widest">박윤수</p>
-      <p className="text-2xl">Frontend Engineer</p>
+    <div className="max-w-4xl px-20 mx-auto tracking-wide font-gothicA1">
+      <h1 className="text-4xl font-bold tracking-widest">박윤수</h1>
+      <h3 className="text-2xl">Frontend Engineer</h3>
       <Introduce />
       <Contact />
       <Title>skill</Title>

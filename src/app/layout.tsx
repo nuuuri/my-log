@@ -33,9 +33,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`min-h-screen ${notosans.className} ${poppins.variable} ${roboto.variable} ${nanumGothic.variable} ${gothicA1.variable} antialiased`}>
+        className={`min-h-screen bg-background text-foreground ${notosans.className} ${poppins.variable} ${roboto.variable} ${nanumGothic.variable} ${gothicA1.variable} antialiased`}>
         <Header />
-        <main className="px-6 pt-20 overflow-x-hidden pb-14 md:px-10 lg:pt-28 lg:py-20 ">
+        <main className="min-h-screen px-6 pt-20 overflow-x-hidden pb-14 md:px-10 lg:pt-28 lg:py-20 ">
           {children}
         </main>
         <FloatingButton />

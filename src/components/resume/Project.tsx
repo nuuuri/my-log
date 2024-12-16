@@ -22,7 +22,9 @@ export default function Project({
         {startDate} ~ {endDate}
       </p>
       <div className="flex-grow">
-        <p className="pb-1 text-[22px] font-semibold tracking-wide">{title}</p>
+        <h2 className="pb-1 text-[22px] font-semibold tracking-wide">
+          {title}
+        </h2>
         {company && (
           <p
             className="pb-1 font-medium text-zinc-600"

@@ -24,7 +24,7 @@ export default async function PostPage({
     <div className="w-full max-w-3xl m-auto xl:max-w-5xl 2xl:max-w-6xl">
       <div className="flex flex-col w-full gap-3 pb-6 text-center border-b border-zinc-200">
         <p className="text-3xl font-bold">{title}</p>
-        <p className="text-orange-400">{metadata.category.join('/')}</p>
+        <p className="text-point">{metadata.category.join('/')}</p>
         <p className="text-sm text-zinc-400">
           {dayjs(metadata.date).utc().format('YYYY년 MM월 DD일')}
         </p>
@@ -34,7 +34,7 @@ export default async function PostPage({
       </article>
       <div className="flex gap-3 pt-6 border-t border-zinc-200">
         {metadata.tags.map((tag) => (
-          <Link key={tag} className="text-orange-400" href={`/tag/${tag}`}>
+          <Link key={tag} className="text-point" href={`/tag/${tag}`}>
             #{tag}
           </Link>
         ))}
