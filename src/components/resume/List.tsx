@@ -9,14 +9,8 @@ interface ListProps {
 }
 
 export default function List({ data, level = 1 }: ListProps) {
-  const getListStyle = () => {
-    if (level === 1) return 'list-disc';
-    if (level === 2) return 'list-circle';
-    return 'list-square';
-  };
-
   return (
-    <ul className={`pt-[2px] pl-10 ${getListStyle()}`}>
+    <ul className={'pt-[2px] pl-10 list-disc'}>
       {data.map(
         ({ text, children }, idx) =>
           text && (

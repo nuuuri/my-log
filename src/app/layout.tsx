@@ -36,7 +36,7 @@ export default function RootLayout({
         className={`${notosans.className} ${poppins.variable} ${roboto.variable} ${nanumGothic.variable} ${gothicA1.variable} antialiased`}>
         <div className="w-screen h-screen">
           <Header />
-          <main className="relative h-[calc(100%_-_56px)] pb-14 overflow-x-hidden">
+          <main className="relative h-[calc(100%_-_56px)] px-5 py-10 pb-14 overflow-x-hidden md:px-10 lg:py-20 ">
             {children}
           </main>
           <Footer />
