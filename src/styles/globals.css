@@ -2,39 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-}
-
 @layer base {
-  h1,
-  h2,
-  h3,
-  h4 {
-    margin: 0 !important;
-    line-height: 1.3 !important;
-    padding: 20px 0 10px 0 !important;
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
   }
 
-  h1 {
-    font-size: 30px !important;
+  body {
+    margin: 0;
   }
 
-  p {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
+  .prose {
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin: 0 !important;
+      line-height: 1.3 !important;
+      padding: 20px 0 10px 0 !important;
+    }
 
-  br {
-    display: block !important;
-    width: 1px !important;
-    height: 24px !important;
+    h1 {
+      font-size: 30px !important;
+    }
+
+    p {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    br {
+      display: block !important;
+      width: 1px !important;
+      height: 24px !important;
+    }
   }
 }
 
