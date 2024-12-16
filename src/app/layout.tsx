@@ -5,7 +5,7 @@ import utc from 'dayjs/plugin/utc';
 
 import '@/styles/globals.css';
 
-import Footer from '@/components/Footer';
+import FloatingButton from '@/components/FloatingButton';
 import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
 
@@ -33,15 +33,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${notosans.className} ${poppins.variable} ${roboto.variable} ${nanumGothic.variable} ${gothicA1.variable} antialiased`}>
-        <div className="w-screen h-screen">
-          <Header />
-          <main className="relative h-[calc(100%_-_56px)] px-5 py-10 pb-14 overflow-x-hidden md:px-10 lg:py-20 ">
-            {children}
-          </main>
-          <Footer />
-          <Sidebar />
-        </div>
+        className={`min-h-screen ${notosans.className} ${poppins.variable} ${roboto.variable} ${nanumGothic.variable} ${gothicA1.variable} antialiased`}>
+        <Header />
+        <main className="px-6 pt-20 overflow-x-hidden pb-14 md:px-10 lg:pt-28 lg:py-20 ">
+          {children}
+        </main>
+        <FloatingButton />
+        <Sidebar />
       </body>
     </html>
   );
