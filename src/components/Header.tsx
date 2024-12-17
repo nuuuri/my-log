@@ -16,9 +16,13 @@ import HeaderMenu from './HeaderMenu';
 export default function Header() {
   const { openSidebar } = useSidebarActions();
 
-  const [theme, setTheme] = useState<Theme>(
-    (localStorage.getItem('theme') as Theme) || 'LIGHT'
-  );
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window !== 'undefined') {
+      return (localStorage.getItem('theme') as Theme) || 'LIGHT';
+    }
+
+    return 'LIGHT';
+  });
 
   const toggleTheme = useCallback(() => {
     setTheme((state) => (state === 'LIGHT' ? 'DARK' : 'LIGHT'));
