@@ -1,3 +1,6 @@
+/* eslint-disable react-refresh/only-export-components */
+import { Metadata } from 'next';
+import Head from 'next/head';
 import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 
@@ -8,6 +11,27 @@ import {
   getPostContent,
   getPostMetadata,
 } from '@/utils/postUtils';
+
+export async function generateStaticParams() {
+  const allPosts = await getAllPostsMetadata();
+
+  return allPosts.map((post) => ({
+    slug: post.slug.split('/'),
+  }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string[] }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const { metadata } = await getPostMetadata(slug.join('/'));
+
+  return {
+    title: metadata.title,
+  };
+}
 
 export default async function PostPage({
   params,
@@ -22,6 +46,9 @@ export default async function PostPage({
 
   return (
     <div className="w-full max-w-3xl m-auto xl:max-w-5xl 2xl:max-w-6xl">
+      <Head>
+        <title>{`${title} | My Log`}</title>
+      </Head>
       <div className="flex flex-col w-full gap-3 pb-6 text-center border-b border-zinc-200">
         <p className="text-3xl font-bold">{title}</p>
         <p className="text-point">{metadata.category.join('/')}</p>
@@ -41,12 +68,4 @@ export default async function PostPage({
       </div>
     </div>
   );
-}
-
-// eslint-disable-next-line react-refresh/only-export-components
-export async function generateStaticParams() {
-  const allPosts = await getAllPostsMetadata();
-  return allPosts.map((post) => ({
-    slug: post.slug.split('/'),
-  }));
 }

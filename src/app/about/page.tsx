@@ -1,3 +1,5 @@
+import { Metadata } from 'next';
+
 import Contact from '@/components/resume/Contact';
 import ETC from '@/components/resume/ETC';
 import Education from '@/components/resume/Education';
@@ -5,6 +7,11 @@ import Experiences from '@/components/resume/Experiences';
 import Introduce from '@/components/resume/Introduce';
 import Projects from '@/components/resume/Projects';
 import Skills from '@/components/resume/Skills';
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const metadata: Metadata = {
+  title: 'About | My Log',
+};
 
 export default function AboutPage() {
   return (
