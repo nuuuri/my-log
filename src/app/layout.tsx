@@ -32,6 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <link href="/icon.png" rel="icon" />
       <body
         className={`min-h-screen bg-background text-foreground ${notosans.className} ${poppins.variable} ${roboto.variable} ${nanumGothic.variable} ${gothicA1.variable} antialiased`}>
         <Header />
