@@ -5,12 +5,14 @@ import Tag from './Tag';
 
 interface ProjectProps extends ProjectType {
   type?: 'PROEJCT' | 'EXPERIENCE';
+  experienceDate?: string;
 }
 
 export default function Project({
   type = 'EXPERIENCE',
   title,
   date,
+  experienceDate,
   company,
   description,
   skills,
@@ -18,9 +20,17 @@ export default function Project({
 }: ProjectProps) {
   return (
     <div className="flex gap-8 mb-5 overflow-hidden">
-      <p className="flex-shrink-0 w-48 text-xl font-medium text-right text-zinc-400">
-        {date}
-      </p>
+      <div className="flex flex-col items-end gap-1">
+        <p className="flex-shrink-0 w-48 text-xl font-medium text-zinc-400">
+          {date}
+        </p>
+        {experienceDate && (
+          <p className="mr-2 px-[6px] py-[3px] rounded-[4px] text-xs text-white bg-blue-600 w-fit h-fit dark:bg-zinc-600 dark:!text-[#fff]">
+            {experienceDate}
+          </p>
+        )}
+      </div>
+
       <div className="flex-grow">
         <h2 className="pb-1 text-xl font-semibold tracking-wide">{title}</h2>
         {company && (
@@ -31,7 +41,7 @@ export default function Project({
           </p>
         )}
         {description && (
-          <blockquote className="ml-1 my-3 border-l-[3px] text-sm border-zinc-400 text-zinc-400">
+          <blockquote className="ml-2 my-3 border-l-[3px] text-sm border-zinc-400 text-zinc-400">
             <p
               className="ml-5 break-words"
               dangerouslySetInnerHTML={{ __html: description || '' }}
@@ -39,7 +49,7 @@ export default function Project({
           </blockquote>
         )}
         {skills && (
-          <div className="flex flex-wrap gap-1 my-3 ml-1">
+          <div className="flex flex-wrap gap-1 my-3 ml-2">
             {skills.map((skill, idx) => (
               <Tag key={idx}>{skill}</Tag>
             ))}

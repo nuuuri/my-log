@@ -34,6 +34,11 @@
     color: #71717a !important;
   }
 
+  ul {
+    list-style-type: disc;
+    padding-left: 16px;
+  }
+
   ul ul {
     list-style-type: circle !important;
   }

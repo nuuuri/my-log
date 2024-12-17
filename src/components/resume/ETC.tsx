@@ -1,0 +1,14 @@
+import Project from '@/components/resume/common/Project';
+import Title from '@/components/resume/common/Title';
+
+import { award } from '@/constants/resume/award';
+
+export default function ETC() {
+  return (
+    <>
+      <Title>ETC</Title>
+      <Project {...award} />
+      <Project date="2019.11" title="정보처리기사 획득" />
+    </>
+  );
+}

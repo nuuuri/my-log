@@ -1,6 +1,6 @@
 export default function Introduce() {
   return (
-    <ul className="my-5 ml-6 text-[15px] list-disc break-keep">
+    <ul className="my-5 ml-4 text-[15px] break-keep">
       <li>
         4년차 프론트엔드 개발자로, 프론트엔드 개발 팀장 으로서의 경험이
         있습니다.

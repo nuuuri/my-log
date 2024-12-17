@@ -1,10 +1,10 @@
 import Contact from '@/components/resume/Contact';
+import ETC from '@/components/resume/ETC';
+import Education from '@/components/resume/Education';
+import Experiences from '@/components/resume/Experiences';
 import Introduce from '@/components/resume/Introduce';
-import Project from '@/components/resume/Project';
-import Title from '@/components/resume/Title';
-
-import { award } from '@/constants/resume/award';
-import { projects } from '@/constants/resume/projects';
+import Projects from '@/components/resume/Projects';
+import Skills from '@/components/resume/Skills';
 
 export default function AboutPage() {
   return (
@@ -15,38 +15,11 @@ export default function AboutPage() {
         <Introduce />
         <Contact />
       </div>
-      <Title>skill</Title>
-      <Title>experience</Title>
-      <Project
-        date="2021.06 ~ 2024.10"
-        tasks={[
-          { text: '연구원 / 프론트엔드 개발' },
-          {
-            text: '연구원 / 팀장 <span class="text-zinc-400 font-normal">(2023.01 ~ 2024.10)</span>',
-          },
-          { text: '2023년 2분기 우수사원 수상' },
-        ]}
-        title="(주)티맥스알지"
-        type="EXPERIENCE"
-      />
-      <Title>project</Title>
-      {projects.map((project, idx) => (
-        <Project key={idx} {...project} />
-      ))}
-      <Title>ETC</Title>
-      <Project {...award} />
-      <Project date="2019.11" title="정보처리기사 획득" />
-      <Title>education</Title>
-      <Project
-        date="2016.03 ~ 2021.02"
-        tasks={[
-          {
-            text: '정보통신공학과 제 18대 부학생회장 역임 (2018.01 ~ 2018.12)',
-          },
-          { text: '정보통신공학과 학사 (2016.03 ~ 2021.02)' },
-        ]}
-        title="인하대학교"
-      />
+      <Skills />
+      <Experiences />
+      <Projects />
+      <ETC />
+      <Education />
     </div>
   );
 }
