@@ -46,7 +46,7 @@ export default function Sidebar() {
         onClick={closeSidebar}
       />
       <aside
-        className={`fixed top-0 w-48 md:w-60 xl:w-80 h-full p-10 bg-zinc-100 transition duration-200 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        className={`fixed top-0 w-48 md:w-60 xl:w-80 h-full p-10 bg-zinc-100 dark:bg-zinc-800 transition duration-200 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="flex flex-col gap-4">
           {menuList.map((menu) => (
             <SidebarMenu key={menu.path} {...menu} onClick={closeSidebar} />

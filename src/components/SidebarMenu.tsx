@@ -17,7 +17,7 @@ export default function SidebarMenu({
   return (
     <div className="flex flex-col gap-2">
       <Link
-        className={`${className} block font-extrabold text-zinc-500 hover:text-zinc-800 tracking-wider`}
+        className={`${className} block font-extrabold text-zinc-500 tracking-wider hover:text-zinc-800 dark:text-zinc-400 dark:hover:!text-zinc-200`}
         href={path}
         onClick={onClick}>
         {title}
@@ -27,7 +27,7 @@ export default function SidebarMenu({
           {children.map((child) => (
             <SidebarMenu
               key={child.path}
-              className="!font-semibold !text-zinc-400 hover:!text-zinc-800 "
+              className="!font-semibold !text-zinc-400 hover:!text-zinc-800 dark:!text-zinc-500"
               {...child}
               path={`${path}${child.path}`}
               onClick={onClick}
