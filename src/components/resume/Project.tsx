@@ -3,14 +3,19 @@ import { Project as ProjectType } from '@/types/Project';
 import List from './List';
 import Tag from './Tag';
 
+interface ProjectProps extends ProjectType {
+  type?: 'PROEJCT' | 'EXPERIENCE';
+}
+
 export default function Project({
+  type = 'EXPERIENCE',
   title,
   date,
   company,
   description,
   skills,
   tasks,
-}: ProjectType) {
+}: ProjectProps) {
   return (
     <div className="flex gap-8 mb-5 overflow-hidden">
       <p className="flex-shrink-0 w-48 text-xl font-medium text-right text-zinc-400">
@@ -34,13 +39,20 @@ export default function Project({
           </blockquote>
         )}
         {skills && (
-          <div className="flex flex-wrap gap-1 my-1 ml-1">
+          <div className="flex flex-wrap gap-1 my-3 ml-1">
             {skills.map((skill, idx) => (
               <Tag key={idx}>{skill}</Tag>
             ))}
           </div>
         )}
-        {tasks && <List data={tasks} />}
+        {tasks && (
+          <List
+            className={
+              type === 'EXPERIENCE' ? '!p-0 !font-normal !text-base' : undefined
+            }
+            data={tasks}
+          />
+        )}
       </div>
     </div>
   );
