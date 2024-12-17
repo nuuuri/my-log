@@ -8,7 +8,7 @@ interface ListProps {
 
 export default function List({ className, data, level = 1 }: ListProps) {
   return (
-    <ul className={level === 1 ? 'pl-8' : 'pl-10'}>
+    <ul className={level === 1 ? 'pl-6 md:pl-8' : 'pl-6 md:pl-10'}>
       {data.map(
         ({ text, children }, idx) =>
           text && (

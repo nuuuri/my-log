@@ -15,10 +15,10 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="max-w-6xl px-20 mx-auto tracking-wide font-gothicA1">
+    <div className="max-w-3xl m-auto tracking-wide xl:max-w-6xl font-gothicA1">
       <h1 className="mb-1 text-4xl font-bold tracking-widest">박윤수</h1>
       <h3 className="ml-[2px] font-medium text-2xl">Frontend Engineer</h3>
-      <div className="flex items-center justify-between gap-10">
+      <div className="flex flex-col items-center justify-between gap-2 md:flex-row md:gap-10">
         <Introduce />
         <Contact />
       </div>

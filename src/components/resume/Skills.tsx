@@ -2,10 +2,10 @@ import Title from '@/components/resume/common/Title';
 
 export default function Skills() {
   return (
-    <>
+    <div>
       <Title>skill</Title>
-      <div className="flex px-4">
-        <ul className="w-1/2">
+      <div className="flex flex-col gap-4 px-4 md:flex-row">
+        <ul className="md:w-1/2">
           <li>React</li>
           <li>JavaScript / TypeScript</li>
           <li>Next.js</li>
@@ -18,6 +18,6 @@ export default function Skills() {
           <li>Nginx</li>
         </ul>
       </div>
-    </>
+    </div>
   );
 }

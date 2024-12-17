@@ -3,7 +3,7 @@ import Title from '@/components/resume/common/Title';
 
 export default function Education() {
   return (
-    <>
+    <div>
       <Title>education</Title>
       <Project
         date="2016.03 ~ 2021.02"
@@ -15,6 +15,6 @@ export default function Education() {
         ]}
         title="인하대학교"
       />
-    </>
+    </div>
   );
 }

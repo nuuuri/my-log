@@ -19,8 +19,8 @@ export default function Project({
   tasks,
 }: ProjectProps) {
   return (
-    <div className="flex gap-8 mb-5 overflow-hidden">
-      <div className="flex flex-col items-end gap-1">
+    <div className="flex flex-col gap-2 pb-5 mb-5 overflow-hidden border-b md:p-0 only:border-none last:border-none md:border-none md:gap-8 md:flex-row">
+      <div className="flex flex-row gap-1 md:items-end md:flex-col">
         <p className="flex-shrink-0 w-48 text-xl font-medium text-zinc-400">
           {date}
         </p>
