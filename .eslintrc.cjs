@@ -103,6 +103,11 @@ module.exports = {
             position: 'after',
           },
           {
+            pattern: '{@/constants/*,@/constants/*/*}',
+            group: 'internal',
+            position: 'after',
+          },
+          {
             pattern: '@/stores/*',
             group: 'internal',
             position: 'after',

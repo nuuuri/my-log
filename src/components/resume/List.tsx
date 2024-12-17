@@ -1,10 +1,7 @@
-interface ListData {
-  text: string;
-  children?: ListData[];
-}
+import { List as ListType } from '@/types/List';
 
 interface ListProps {
-  data: ListData[];
+  data: ListType[];
   level?: number;
 }
 
