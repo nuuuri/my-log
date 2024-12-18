@@ -1,6 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
 import { Metadata } from 'next';
-import Head from 'next/head';
 import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 
@@ -31,7 +30,15 @@ export async function generateMetadata({
   const { metadata } = await getPostMetadata(slug.join('/'));
 
   return {
-    title: metadata.title,
+    title: `${metadata.title} | My Log`,
+    description: metadata.description || '',
+    openGraph: {
+      type: 'website',
+      title: `${metadata.title} | My Log`,
+      description: metadata.description || '',
+      url: `https://nuuuri.vercel.app/${slug}`,
+      locale: 'ko_KR',
+    },
   };
 }
 
@@ -48,9 +55,6 @@ export default async function PostPage({
 
   return (
     <div className="w-full max-w-3xl m-auto xl:max-w-5xl 2xl:max-w-6xl">
-      <Head>
-        <title>{`${title} | My Log`}</title>
-      </Head>
       <div className="flex flex-col w-full gap-3 pb-6 text-center border-b border-zinc-200">
         <p className="text-3xl font-bold">{title}</p>
         <p className="text-point">{metadata.category.join('/')}</p>
