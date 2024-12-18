@@ -6,6 +6,8 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 
 import dayjs from 'dayjs';
 
+import rehypePrettyCode from 'rehype-pretty-code';
+
 import {
   getAllPostsMetadata,
   getPostContent,
@@ -57,7 +59,14 @@ export default async function PostPage({
         </p>
       </div>
       <article className="my-10 prose">
-        <MDXRemote source={content} />
+        <MDXRemote
+          options={{
+            mdxOptions: {
+              rehypePlugins: [[rehypePrettyCode, { theme: 'slack-dark' }]],
+            },
+          }}
+          source={content}
+        />
       </article>
       <div className="flex gap-3 pt-6 border-t border-zinc-200">
         {metadata.tags.map((tag) => (
