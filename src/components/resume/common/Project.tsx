@@ -35,7 +35,7 @@ export default function Project({
         <h2 className="pb-1 text-xl font-semibold tracking-wide">{title}</h2>
         {company && (
           <p
-            className="pb-1 font-medium text-zinc-600"
+            className="pb-1 font-medium text-zinc-500"
             style={{ whiteSpace: 'pre-wrap' }}>
             {company}
           </p>
@@ -43,7 +43,7 @@ export default function Project({
         {description && (
           <blockquote className="ml-2 my-3 border-l-[3px] text-sm border-zinc-400 text-zinc-400">
             <p
-              className="ml-5 break-words"
+              className="ml-5 break-words leading-relaxed"
               dangerouslySetInnerHTML={{ __html: description || '' }}
             />
           </blockquote>

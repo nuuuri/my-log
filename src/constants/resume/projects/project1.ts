@@ -42,7 +42,7 @@ export const project1: Project = {
     {
       text: '수학 주관식 문항 템플릿 설계 및 개발',
       children: [
-        { text: 'LaTex 문법을 지원하는 초중고 수식입력기 개발' },
+        { text: 'Latex 문법을 지원하는 초중고 수식입력기 개발' },
         { text: '동일 수식 판별 로직 구현 및 채점 기능 개발' },
       ],
     },

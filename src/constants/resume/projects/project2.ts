@@ -70,7 +70,7 @@ export const project2: Project = {
           ],
         },
         {
-          text: '계층 구조 기반 Range 파싱 로직 구현',
+          text: '다중 Element를 드래그 시 Range 파싱 로직 구현',
           children: [
             {
               text: '여러 HTML 요소에 걸쳐 생성된 Range에 대한 파싱 및 span 태그 삽입 로직 구현',
