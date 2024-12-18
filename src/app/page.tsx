@@ -6,7 +6,7 @@ export default async function Home() {
   const allPosts = await getAllPostsMetadata();
 
   return (
-    <div className="max-w-3xl m-auto xl:max-w-5xl 2xl:max-w-6xl">
+    <div className="max-w-3xl m-auto">
       <div className="mb-5 text-2xl font-bold tracking-widest text-point font-nanumGothic">
         전체글
       </div>

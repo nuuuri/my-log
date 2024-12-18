@@ -42,22 +42,24 @@ export default function Header() {
   }, [theme]);
 
   return (
-    <nav className="fixed flex items-center justify-between w-full px-5 border-b shadow-sm bg-background border-zinc-300 h-14 dark:border-zinc-700">
-      <div className="flex gap-6">
-        <IoMenu
-          className="w-6 h-6 cursor-pointer hover:text-zinc-800 dark:hover:text-zinc-400"
-          onClick={() => openSidebar()}
-        />
-        <HeaderMenu path="/" title="My Log" />
-        <HeaderMenu path="/about" title="About" />
-      </div>
-      <div className="flex items-center gap-5">
-        <button className="icon" onClick={toggleTheme}>
-          {theme === 'LIGHT' ? <ImSun /> : <LuMoon />}
-        </button>
-        <Link className="icon" href="https://github.com/nuuuri">
-          <FaGithub />
-        </Link>
+    <nav className="fixed w-full px-5 border-b shadow-sm bg-background border-zinc-300 h-14 dark:border-zinc-700">
+      <div className="flex items-center justify-between h-full m-auto max-w-7xl">
+        <div className="flex gap-6">
+          <IoMenu
+            className="w-6 h-6 cursor-pointer hover:text-zinc-800 dark:hover:text-zinc-400"
+            onClick={() => openSidebar()}
+          />
+          <HeaderMenu path="/" title="My Log" />
+          <HeaderMenu path="/about" title="About" />
+        </div>
+        <div className="flex items-center gap-5">
+          <button className="icon" onClick={toggleTheme}>
+            {theme === 'LIGHT' ? <ImSun /> : <LuMoon />}
+          </button>
+          <Link className="icon" href="https://github.com/nuuuri">
+            <FaGithub />
+          </Link>
+        </div>
       </div>
     </nav>
   );

@@ -54,7 +54,7 @@ export default async function PostPage({
   const content = getPostContent(slug.join('/'));
 
   return (
-    <div className="w-full max-w-3xl m-auto xl:max-w-5xl 2xl:max-w-6xl">
+    <div className="w-full max-w-3xl m-auto">
       <div className="flex flex-col w-full gap-3 pb-6 text-center border-b border-zinc-200">
         <p className="text-3xl font-bold">{title}</p>
         <p className="text-point">{metadata.category.join('/')}</p>
