@@ -1,11 +1,10 @@
 /* eslint-disable react-refresh/only-export-components */
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { MDXRemote } from 'next-mdx-remote/rsc';
 
 import dayjs from 'dayjs';
 
-import rehypePrettyCode from 'rehype-pretty-code';
+import MdxContent from '@/components/MdxContent';
 
 import {
   getAllPostsMetadata,
@@ -63,14 +62,7 @@ export default async function PostPage({
         </p>
       </div>
       <article className="my-10 prose">
-        <MDXRemote
-          options={{
-            mdxOptions: {
-              rehypePlugins: [[rehypePrettyCode, { theme: 'slack-dark' }]],
-            },
-          }}
-          source={content}
-        />
+        <MdxContent content={content} />
       </article>
       <div className="flex gap-3 pt-6 border-t border-zinc-200">
         {metadata.tags.map((tag) => (
