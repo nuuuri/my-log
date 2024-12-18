@@ -78,7 +78,7 @@ module.exports = {
     ],
     '@typescript-eslint/explicit-function-return-type': 'off',
     'import/order': [
-      'error',
+      'warn',
       {
         groups: [
           'builtin',

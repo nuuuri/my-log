@@ -10,7 +10,7 @@ interface PostCardProps {
 
 export default function PostCard({ post }: PostCardProps) {
   const { metadata } = post;
-  const { title, description, category, date, tags } = metadata;
+  const { title, category, date } = metadata;
 
   return (
     <Link
