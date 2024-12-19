@@ -50,7 +50,12 @@ export const getPostMetadata = async (slug: string) => {
     const categories = slug.split('/');
     categories.pop(); // 파일명 제거
 
-    const metadata = { ...parseMetadata(content), category: categories };
+    const parsedContent = parseMetadata(content);
+    const metadata = {
+      ...parsedContent,
+      title: parsedContent.title.replace(/\\(\[|\])/g, '$1'),
+      category: categories,
+    };
 
     return {
       slug,
