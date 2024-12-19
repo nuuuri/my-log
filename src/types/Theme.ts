@@ -1,1 +1,5 @@
-export type Theme = 'LIGHT' | 'DARK' | 'OS';
+export const Theme = {
+  LIGHT: 'light',
+  DARK: 'dark',
+  OS: 'os',
+} as const;

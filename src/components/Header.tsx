@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useCallback, useEffect, useState } from 'react';
+import { useTheme } from 'next-themes';
+import { useCallback } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { ImSun } from 'react-icons/im';
 import { IoMenu } from 'react-icons/io5';
@@ -15,31 +16,15 @@ import HeaderMenu from './HeaderMenu';
 
 export default function Header() {
   const { openSidebar } = useSidebarActions();
-
-  const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window !== 'undefined') {
-      return (localStorage.getItem('theme') as Theme) || 'LIGHT';
-    }
-
-    return 'LIGHT';
-  });
+  const { theme, setTheme } = useTheme();
 
   const toggleTheme = useCallback(() => {
-    setTheme((state) => (state === 'LIGHT' ? 'DARK' : 'LIGHT'));
-    localStorage.setItem('theme', theme === 'LIGHT' ? 'DARK' : 'LIGHT');
-  }, [theme]);
-
-  useEffect(() => {
-    if (
-      theme === 'DARK' ||
-      (theme === 'OS' &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      document.documentElement.classList.add('dark');
+    if (theme === Theme.LIGHT) {
+      setTheme(Theme.DARK);
     } else {
-      document.documentElement.classList.remove('dark');
+      setTheme(Theme.LIGHT);
     }
-  }, [theme]);
+  }, [theme, setTheme]);
 
   return (
     <nav className="fixed w-full px-5 border-b shadow-sm bg-background border-zinc-300 h-14 dark:border-zinc-700">
@@ -54,7 +39,8 @@ export default function Header() {
         </div>
         <div className="flex items-center gap-5">
           <button className="icon" onClick={toggleTheme}>
-            {theme === 'LIGHT' ? <ImSun /> : <LuMoon />}
+            <ImSun className="dark:hidden" />
+            <LuMoon className="hidden dark:block" />
           </button>
           <Link className="icon" href="https://github.com/nuuuri">
             <FaGithub />
