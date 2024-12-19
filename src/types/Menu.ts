@@ -1,5 +1,5 @@
-export interface Menu {
+export interface MenuData {
   title: string;
   path: string;
-  children?: Menu[];
+  children?: MenuData[];
 }

@@ -1,8 +1,8 @@
-import { Project } from '@/types/Resume';
+import { ResumeProjectData } from '@/types/Resume';
 
-export const project3: Project = {
+export const project3: ResumeProjectData = {
   title: '와플수학 교사용 서비스 개발',
-  company: '(주)티맥스알지',
+  subtitle: '(주)티맥스알지',
   date: '2021.07 ~ 2021.11',
   description:
     '학생들의 학습 현황 확인 및 개별 학습 수준 분석 등의 학생 관리 기능을 제공하는 교사용 서비스입니다. <br/>유저 서비스 및 1:1 문의 서비스를 개발하였으며, 2021년 11월 경에 릴리즈 완료되어 여러 학교에 납품 되었습니다.',

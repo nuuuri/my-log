@@ -1,4 +1,4 @@
-export interface List {
+export interface ListData {
   text: string;
-  children?: List[];
+  children?: ListData[];
 }

@@ -1,8 +1,8 @@
-import { Project } from '@/types/Resume';
+import { ResumeProjectData } from '@/types/Resume';
 
-export const project2: Project = {
+export const project2: ResumeProjectData = {
   title: '디지털 앱북 플랫폼 & 플레이어 개발',
-  company: '(주)티맥스알지',
+  subtitle: '(주)티맥스알지',
   date: '2022.01 ~ 2024.03',
   description:
     '디지털 앱북을 제작 및 배포할 수 있는 Low Code 저작도구와  다양한 뷰어 기능을 포함한 플레이어를 개발하였습니다. <br/>2023 에듀테크 코리아 페어에 참가하여 참여자들이 직접 플레이어 기능을 체험할 수 있도록 부스 시연을 진행하였습니다.',

@@ -5,7 +5,10 @@ import { Metadata } from 'next';
 
 import ResumeContact from '@/components/Resume/Contact';
 import ResumeIntroduce from '@/components/Resume/Introduce';
+import ResumeProjects from '@/components/Resume/Projects';
 import ResumeTitle from '@/components/Resume/Title';
+
+import { projects } from '@/constants/resume/projects';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {
@@ -40,10 +43,10 @@ export default function AboutPage() {
           ]}
         />
       </div>
+      <ResumeProjects data={projects} />
       {/*
       <Skills />
       <Experiences />
-      <Projects />
       <ETC />
       <Education /> */}
     </div>

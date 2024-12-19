@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { Menu } from '@/types/Menu';
+import { MenuData } from '@/types/Menu';
 
-export default function HeaderMenu({ title, path }: Menu) {
+export default function HeaderMenu({ title, path }: MenuData) {
   const pathname = usePathname();
   const isSelected = (path === '/about') === (pathname === '/about');
 

@@ -2,10 +2,10 @@ import Link from 'next/link';
 
 import dayjs from 'dayjs';
 
-import { Post } from '@/types/Post';
+import { PostData } from '@/types/Post';
 
 interface PostCardProps {
-  post: Post;
+  post: PostData;
 }
 
 export default function PostCard({ post }: PostCardProps) {

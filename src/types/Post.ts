@@ -6,7 +6,7 @@ export interface PostMetadata {
   date: Date;
 }
 
-export interface Post {
+export interface PostData {
   slug: string;
   metadata: PostMetadata;
 }

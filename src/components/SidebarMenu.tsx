@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-import { Menu } from '@/types/Menu';
+import { MenuData } from '@/types/Menu';
 
-interface SidebarMenuProps extends Menu {
+interface SidebarMenuProps extends MenuData {
   className?: string;
   onClick: () => void;
 }

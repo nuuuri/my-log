@@ -2,7 +2,7 @@
 
 import { useSidebarActions, useSidebarIsOpen } from '@/stores/useSidebarStore';
 
-import { Menu } from '@/types/Menu';
+import { MenuData } from '@/types/Menu';
 
 import SidebarMenu from './SidebarMenu';
 
@@ -10,7 +10,7 @@ export default function Sidebar() {
   const isOpen = useSidebarIsOpen();
   const { closeSidebar } = useSidebarActions();
 
-  const menuList: Menu[] = [
+  const menuList: MenuData[] = [
     { title: 'Home', path: '/' },
     {
       title: 'Category',
