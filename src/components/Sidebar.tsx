@@ -12,31 +12,32 @@ export default function Sidebar() {
 
   const menuList: MenuData[] = [
     { title: 'Home', path: '/' },
-    {
-      title: 'Category',
-      path: '/category',
-      children: [
-        {
-          title: 'Test',
-          path: '/test',
-        },
-        { title: 'Test2', path: '/test2' },
-      ],
-    },
-    {
-      title: 'Tag',
-      path: '/tag',
-      children: [
-        {
-          title: 'Tag1',
-          path: '/tag1',
-        },
-        {
-          title: 'Tag2',
-          path: '/tag2',
-        },
-      ],
-    },
+    { title: 'About', path: '/about' },
+    // {
+    //   title: 'Category',
+    //   path: '/category',
+    //   children: [
+    //     {
+    //       title: 'Test',
+    //       path: '/test',
+    //     },
+    //     { title: 'Test2', path: '/test2' },
+    //   ],
+    // },
+    // {
+    //   title: 'Tag',
+    //   path: '/tag',
+    //   children: [
+    //     {
+    //       title: 'Tag1',
+    //       path: '/tag1',
+    //     },
+    //     {
+    //       title: 'Tag2',
+    //       path: '/tag2',
+    //     },
+    //   ],
+    // },
   ];
 
   return (

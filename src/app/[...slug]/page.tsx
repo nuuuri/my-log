@@ -66,9 +66,12 @@ export default async function PostPage({
       </article>
       <div className="flex gap-3 pt-6 border-t border-zinc-200">
         {metadata.tags.map((tag) => (
-          <Link key={tag} className="text-point" href={`/tag/${tag}`}>
+          <div key={tag} className="text-point">
             #{tag}
-          </Link>
+          </div>
+          // <Link key={tag} className="text-point" href={`/tag/${tag}`}>
+          //   #{tag}
+          // </Link>
         ))}
       </div>
     </div>
