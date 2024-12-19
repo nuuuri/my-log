@@ -1,0 +1,33 @@
+---
+title: \[Redux\] Middleware
+description: Redux Middleware
+tags:
+  - Redux
+  - Redux_Middleware
+  - Redux_Thunk
+  - Redux_Saga
+date: 2024-10-07 09:20:00
+---
+
+![Redux Flow](https://img.notionusercontent.com/s3/prod-files-secure%2Feb9bb317-cfdb-4742-af8a-a5c9f8aeb547%2F19b89228-c882-4383-ab78-f1c46d65a3f8%2Fimage.png/size/w=2000?exp=1734632099&sig=RavsG2WW0u-MkqrmznK1n3xeXpDER9QnT11yLfwsMxU)
+
+- action이 dispatch 되어서 reducer에서 이를 처리하기 전에 사전에 지정된 작업들을 설정해줌
+- action을 console에 기록, 전달 받은 action에 기반하여 action 취소, 다른 종류의 action을 추가 등등…
+
+```tsx
+const configureStore = () => {
+  const middlewares = [];
+
+  const enhancer =
+    process.env.NODE_ENV === 'production'
+      ? compose(applyMiddleware(...middlewares))
+      : composeWithDevTools(applyMiddleware(...middlewares));
+
+  const store = createStore(rootReducer, enhancer);
+
+  return store;
+};
+```
+
+- **`redux-thunk`** : 비동기 작업 미들웨어. 사용하면 action 객체가 아닌 함수를 dispatch 할 수 있음 → 한번에 dispatch를 여러번 할 수 있게 해줌
+- **`redux-saga`** : 비동지 작업 미들웨어. action을 모니터링 하고 있다가, 특정 action이 발생하면 미리 정해둔 로직에 따라 특정 작업이 이루어짐

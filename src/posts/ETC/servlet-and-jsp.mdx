@@ -1,0 +1,104 @@
+---
+title: 서블릿(Servlet)과 JSP
+description: 서블릿(Servlet)과 JSP
+tags:
+  - Servlet
+  - JSP
+date: 2022-09-30 16:06:00
+---
+
+## 1. 서블릿이란?
+
+- 자바를 사용하여 **`웹 페이지를 동적으로 생성`** 하는 서버 측 프로그램 혹은 그 사양
+- 클라이언트의 요청에 대해 동적으로 작동하는 웹 어플리케이션 컴포넌트
+- 자바로 구현된 **CGI** 프로그램
+- 서블릿 자체는 자바로 만들어진 하나의 `클래스 파일`
+  ⇒ 이를 로드하고 실행시키기 위한 `jvm`이 필수 / 서블릿이 만든 컨텐츠를 웹 서버에게 제공하는 `컨테이너` 필요
+
+<aside>
+📌 **CGI(Common Gateway Interface)란?**
+
+CGI는 `서버와 외부 스크립트 또는 프로그램이 상호작용할 때 이루어지는 입출력을 정의한 표준`으로, 예전에는 C나 Perl로 작성한 CGI 프로그램 자체를 CGI라고 칭했다.
+
+</aside>
+
+## 2. 특징
+
+- **`자바 코드 안에 HTML을 포함`** 하는 구조 (`println` 메소드로 HTML 문서 작성)
+- MVC 패턴에서 Controller로 이용됨
+- 자바 `쓰레드`를 이용하여 동작함
+- HTML을 사용하여 요청에 응답함
+- **HTTP 프로토콜 서비스**를 지원하는 javax.servlet.http.HttpServlet 클래스를 상속받음
+- HTML 변경 시 Servlet을 재컴파일 해야하는 단점이 있음
+- UDP보다 처리 속도가 느림
+
+<aside>
+📌 **HTTP 프로토콜을 이용한 서버와 클라이언트의 통신 과정은?**
+
+1. `클라이언트`가 정보를 얻기 위해 서버로 HTTP 요청을 전송
+2. `서버`는 이를 해석하여 정적 자원에 대한 요청일 경우 자원을 반환함
+3. 그렇지 않을 경우(**동적 자원에 대한 요청**) `CGI 프로그램`을 실행시키고 **파이프라인**을 연결
+4. `CGI 프로그램`은 파이프라인을 통해 서버로부터 전달 받은 요청에 대한 서비스를 수행하고, **결과 페이지에 해당하는 MIME 타입의 컨텐츠 데이터**를 파이프라인에 출력하여 서버에 전달
+5. `서버`는 파이프라인을 통해 전달 받은 결과 페이지의 데이터를 읽고 HTTP 응답 헤더를 생성하여 클라이언트에게 데이터를 반환함
+
+</aside>
+
+## 3. 동작 방식
+
+![Untitled](https://img.notionusercontent.com/s3/prod-files-secure%2F76fa3146-0981-4366-a7e0-f4a243822889%2F7e02f397-3ab3-45bc-9744-d58b9f66fbe6%2FUntitled.png/size/w=1640?exp=1734633160&sig=vb0Ve3KLR6fg6RVPMsqeHWQeSUcbsgSXCEMfa3gmqyE)
+
+```
+1. 클라이언트가 URL을 입력하면 HTTP Request가 서블릿 컨테이너로 전송됨
+
+2. 요청을 전송 받은 서블릿 컨테이너는 HttpServletRequest, HttpServletResponse 객체를 생성
+
+3. web.xml을 기반으로 사용자가 요청한 URL이 어느 서블릿에 대한 요청인지 찾음
+
+4. 해당 서블릿에서 service 메소드를 호출한 후, 클라이언트의 GET, POST 여부에 따라 doGet() 또는 doPost()를 호출함
+
+5. doGet() 또는 doPost() 메소드는 동적 페이지를 생성한 후 HttpServletResponse 객체에 응답을 보냄
+
+6. 응답이 끝나면 HttpServletRequest, HttpServletResponse 객체를 소멸시킴
+```
+
+## 4. 서블릿과 JSP
+
+- **`서블릿`**
+  : **자바 코드 안에 HTML 코드가 포함**
+- **`JSP`**
+  : **HTML 코드 안에 자바 코드가 포함**
+  → 자바 코드로 작성된 부분은 웹 브라우저가 아닌 웹 서버에서 실행됨
+  JSP는 WAS에 의하여 서블릿 클래스로 변환하여 사용됨
+
+### \* JSP 동작 구조
+
+![Untitled](https://img.notionusercontent.com/s3/prod-files-secure%2F76fa3146-0981-4366-a7e0-f4a243822889%2F6cd970ef-92a0-4bb6-a723-b93d5ff415be%2FUntitled.png/size/w=1540?exp=1734633173&sig=dtdd0KLwBLcvXYge2y3TF_WDYqd0P82K90wdtdVsEqM)
+
+`웹 브라우저` → `웹 서버` → `JSP 컨테이너` → `**.jsp` →* `*.java`→`\*.class`→`웹 서버`→`웹 브라우저`
+
+```
+1) 사용자(웹 브라우저)가 웹 서버에게 *.jsp에 대한 요청을 전송함
+
+2) 웹 서버는 사용자의 요청을 JSP 컨테이너에 넘김
+
+3) 만약 JSP 파일이 처음 요청된 경우 JSP 파일을 파싱하고, 그렇지 않은 경우 6)의 단계로 감
+
+4) JSP 파일로부터 서블릿이라는 자바 파일이 생성됨
+
+5) 서블릿 파일이 컴파일 과정을 거쳐 class 파일이 됨
+
+6) class 파일이 메모리가 적재되어 실행됨
+
+7) JSP 컨테이너는 실행 결과를 웹 서버에 넘기고, 웹 서버는 HTML 형태로 사용자에게 응답 전송
+```
+
+<aside>
+⚠️ **서블릿만 사용하면 안되나요?**
+
+만약 서블릿만 사용하여 사용자가 요청한 웹 페이지를 생성하려면 `out` 객체의 `println` 메소드를 사용하여 HTML 문서를 작성해야 하는데, 이는 추가/수정을 어렵게 하고 가독성도 떨어지기 때문에 일반적으로 **`JSP`**를 사용하여 **비즈니스 로직과 프레젠테이션 로직을 분리**한다. (JSP는 화면 구성, 서블릿은 로직 수행)
+
+</aside>
+
+---
+
+- https://codevang.tistory.com/191 : 웹 어플리케이션의 구조에 관련하여 정리가 잘 된 포스팅 주소이다. WEB 서버 단일 구성, WEB-WAS 구성 등 자세하게 다뤘으니 궁금하다면 참조하시길!

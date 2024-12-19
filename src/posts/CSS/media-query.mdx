@@ -1,0 +1,61 @@
+---
+title: 반응형 웹을 위한 미디어 쿼리 (Media Query)
+description: 반응형 웹을 위한 미디어 쿼리 (Media Query)
+tags:
+  - 반응형
+  - 반응형_UI
+  - 미디어쿼리
+  - Media_Query
+date: 2023-09-17 19:36:00
+---
+
+## 1. 반응형 웹이란?
+
+- 디바이스(기기)별로 레이아웃이 달라지는 웹
+- 화면의 크기마다 레이아웃이 달라짐
+
+## 2. 미디어 쿼리(Media Query)란?
+
+- 특정 조건이 true인 경우에만 코드 블록{ } 내부의 CSS 코드를 실행해주는 구문
+- IE8 이하는 지원하지 않음 ⇒ `polyfill` 사용
+
+### 2-1) 미디어 타입(media type)
+
+- (default 값은 all)
+- `all` : 모든 장치
+- `screen` : 컴퓨터 화면 또는 스마트 기기 화면
+- `tv` : 영상과 음성이 함께 출력되는 장치
+- `speech` : 음성 출력 장치
+- …
+
+### 2-2) 작성 방법
+
+```css
+**@media** (only|not) **미디어유형** and|, **조건** {
+	...
+}
+```
+
+- `only` : 미디어 쿼리를 지원하는 브라우저에서만 미디어 쿼리를 해석하게 함
+- `not` : not 다음 조건은 제외 (not tv인 경우, tv를 제외한 모든 미디어)
+- `and` : 앞뒤 조건이 모두 true인 경우
+- `,` : 앞뒤 조건 중 하나라도 true인 경우
+
+### 2-3) 예시 코드
+
+```css
+// 데스크탑 규격
+@media screen and (min-width: 1024px) {
+	...
+}
+
+// 태블릿 규격
+@media screen and (max-width: 1023px){
+
+}
+
+// 모바일 규격
+@media screen and (max-width: 767px){
+
+}
+```

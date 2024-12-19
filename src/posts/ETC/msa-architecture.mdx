@@ -1,0 +1,164 @@
+---
+title: MSA 아키텍처
+description: Microservices Architecture
+tags:
+  - MSA
+  - MSA_아키텍처
+  - Micro_Service_Architecture
+date: 2023-08-22 22:38:00
+---
+
+![Untitled](https://img.notionusercontent.com/s3/prod-files-secure%2F76fa3146-0981-4366-a7e0-f4a243822889%2F88e18c03-8417-4476-a92d-381974d99e87%2FUntitled.png/size/w=1150?exp=1734632875&sig=rseIcQVbOg0xo64AiHkD9SNlJfRcFe96ELQ1pDdosNM)
+
+# 1. External Gateway
+
+- 서비스 외부로부터 오는 접근을 내부 구조를 드러내지 않고 처리하기 위한 요소
+- 역할 : 사용자 인증(Consumer Identity Provider), 권한 정책 관리(Policy Management)
+
+## 1-1. **API Gateway**
+
+![Untitled](https://img.notionusercontent.com/s3/prod-files-secure%2F76fa3146-0981-4366-a7e0-f4a243822889%2Fe233e0ce-dd2d-4613-80a8-2c3779313ad8%2FUntitled.png/size/w=1250?exp=1734632892&sig=myFwm-NoqZpoSWktBlwStnamWohvodki5ejDFw6YI5M)
+
+- **`서버의 앞에서 모든 API 호출을 받아 인증 후에 적절한 서비스에 라우팅`**
+- **필요성**
+  - MSA는 큰 서비스를 잘게 나누어 개발/운영하는 아키텍처
+  - 하나의 큰 서비스는 수십~수백 개의 작은 서비스로 나누어짐
+  - 이를 클라이언트에서 서비스를 직접 호출하면 다음 문제가 발생
+    - 각각의 서비스마다 인증/인가 등 공통된 로직을 구현해야 하는 번거로움
+    - 수많은 API 호출을 기록하고 관리하기 어려움
+    - 클라이언트에서 여러 마이크로 서비스에 대한 번거로운 호출을 해야 함
+    - 내부의 비즈니스 로직이 드러나게 되어 보안에 취약해짐
+- **주요 기능**
+  1.  **`인증 및 인가(Authentication and Authorization)`**
+      - 인증서 관리, SSL, 프로토콜 변환과 같은 기능들을 API Gateway에서 오프로드
+        ⇒ 서비스의 부담을 줄이고 서비스 관리 및 업그레이드를 보다 쉽게 할 수 있음 > **\*오프로딩(offloading)이란? :** 컴퓨팅 자원 및 계산 속도의 한계를 극복하기 위해 로컬 컴퓨터에서 수행하는 어플리케이션의 일부를 컴퓨팅 자원과 처리 능력이 우수한 원격지 컴퓨터에 전달하여 처리한 후 결과를 반환 받는 방식\* >
+  2.  **`요청 절차의 단순화`**
+      - 여러 클라이언트의 요청을 단일 클라이언트의 요청으로 대체
+  3.  **`라우팅 및 로드밸런싱`**
+      - 클라이언트로부터 접수된 메시지에 따라 API 호출을 적절한 서비스에 라우팅
+      - 서비스 인스턴스들에 대한 로드밸런싱 가능
+  4.  **`서비스 오케스트레이션(Orchestration)`**
+      - 여러 마이크로 서비스들을 묶어 새로운 서비스를 만드는 개념
+      - 과도한 오케스트레이션 로직은 API Gateway의 부담이 늘어나 성능 저하가 발생할 수 있음
+  5.  **`서비스 디스커버리`**
+      - API Gateway는 각 서비스를 호출하기 위해 서비스마다 IP 주소와 포트 번호를 알고 있어야 함
+      - 서비스의 위치(IP 주소와 포트 번호)를 찾는 역할을 담당
+- 적용 시 고려 사항
+  - Scale out 적용이 유연하지 않으면 API Gateway에 병목 현상이 발생
+    ⇒ 애플리케이션의 성능 저하가 발생할 수 있음
+  - API Gateway라는 추가적인 Layer가 만들어지는 것이기 때문에 네트워크 지연 시간이 증가함
+
+# 2. Service Mesh
+
+- **`마이크로 서비스 구성 요소 간 네트워크를 제어하는 인프라 계층`**
+- 역할 : 서비스 디스커버리, 서비스 라우팅, 트래픽 관리, 로드밸런싱, 보안
+- 서비스 간 통신을 추상화 ⇒ 안정성, 신뢰성, 탄력성, 표준화, 가시성, 보안성 확보
+- **주요 기능**
+  1. 요청 라우팅 제어
+  2. 계단식 장애 방지(서킷브레이크)
+  3. 부하 분산 알고리즘(로드밸런싱)
+  4. 보안 기능 강화(TLS, 암호화, 인증 및 권한 부여)
+  5. 서비스 간 계층에서 계측 정보를 제공하는 매트릭
+- **구조**
+  ![Untitled](https://img.notionusercontent.com/s3/prod-files-secure%2F76fa3146-0981-4366-a7e0-f4a243822889%2F42394b08-1281-4b47-8e0b-ee6a08e442c1%2FUntitled.png/size/w=760?exp=1734632922&sig=CpEMN-xk27sqMwo5zxjKlBAxOSYHOySec1r5LbM6KSM)
+  - 기존의 서비스 아키텍처에서의 호출은 위와 같이 직접 호출
+  - Service Mesh에서의 호출은 **`서비스에 딸린 Proxy를 통해 이루어짐`**
+    - 기존 TCP 기반의 proxy로는 한계가 있어 sidecar로 배치된 경량화되고 L7 계층 기반의 proxy 사용
+      ![Untitled](https://img.notionusercontent.com/s3/prod-files-secure%2F76fa3146-0981-4366-a7e0-f4a243822889%2Fc362fb80-94a3-4cbf-b627-78ff4f1c2bbd%2FUntitled.png/size/w=1410?exp=1734632935&sig=yLBqiN8h5gs0XZeAbNsHy6r8yaYDM_XGtQs1vUKciG0)
+  - Control Plain
+    - 트래픽을 제어하는 정책 및 구성에 따라 proxy에게 설정값을 전달하고 관리하는 컨트롤러 역할
+  - Data Plain
+    - proxy를 통해 마이크로 서비스 간에 오고 가는 모든 네트워크 통신을 조정하고 제어
+    - Service Discovery, Load Balancing, TLS Termination, Cricuit Breaker 등의 기능 제공
+- **유형**
+  1. **PaaS의 일부로 서비스 코드에 포함되는 유형**
+     - 프레임워크 기반의 프로그래밍 모델
+     - Service Mesh를 구현하는데 특화된 코드 필요(Mesh-native Code)
+     - ex) Microsoft Azure Service fabric, lagom, SENECA 등
+  2. **라이브러리로 구현되어 API 호출을 통해 Service Mesh에 결합되는 유형**
+     - 프레임워크 라이브러리를 사용하는 형태
+     - ex) Spring Cloud, Netflix OSS(Ribbon/Hystrix/Eureka/Archaius), finagle 등
+     - Netflix의 Prana는 sidecar 형태로 동작
+  3. **Sidecar proxy를 이용하여 Service Mesh를 마이크로 서비스에 주입하는 유형**
+     - sidecar proxy 형태로 동작 → Service Mesh와 무관하게 코드 작성 가능
+     - ex) Istio/Envoy, Consul, Linkerd 등
+- **Service Mesh와 API Gateway**
+  > API Gateway도 라우팅, 서비스 디스커버리 등을 담당하지 않나요?? 🤔🤔
+  - 적용되는 위치
+    - API Gateway는 외부(External)에 위치하여 내부 서비스를 보호 및 제어
+    - Service Mesh는 내부(Internal)에 위치하여 서비스를 관리
+  - 아키텍처 형태
+    - API Gateway는 중앙 집중형 아키텍처 → SPOF(Single Point of Failure)를 생성
+    - Service Mesh는 분산형 아키텍처 → SPOF를 생성하지 않고 확장이 용이
+  - 패턴
+    - API Gateway는 일반적으로 Gateway proxy pattern
+      - Consumer(호출자)는 구현 내용을 알 필요 없이 Gateway만 호출
+    - Service Mesh는 일반적으로 Sidecar proxy pattern
+      - Consumer(호출자)의 코드에는 Provider(공급자)의 주소를 찾는 방법, failover와 관련된 코드 등의 내용이 들어감
+      - 호출자의 코드는 어플리케이션 코드(비즈니스 로직)에 내장되지 않고 sidecar 형태로 별개로 관리됨
+        > **Sidecar Pattern이란? :** 어플리케이션 컨테이너와 독립적으로 동작하는 별도의 컨테이너를 붙이는 패턴\*
+  - 차이
+    - API Gateway는 중앙 집중식 제어 영역
+    - Service Mesh는 애플리케이션 기능을 인프라 계층에 의해 관리되는 마이크로 서비스로 분리하는 방법
+      **⇒ API Gateway는 Service Mesh 아키텍처의 중재자 역할**
+
+# 3. Backing Service
+
+- **`어플리케이션이 실행되는 가운데 네트워크를 통해서 사용할 수 있는 모든 서비스`**
+- 데이터베이스, 캐쉬 시스템, SMTP 서비스 등 어플리케이션과 통신하는 attached Resource들을 지칭하는 포괄적인 개념
+- 데이터의 지속성과 일관성 있는 처리를 위해 동작
+- 마이크로 서비스의 복잡한 흐름에서 상호 간 비동기로 처리되어야 하는 서비스 간에 Backing Service를 구현하여 서비스 결합도를 낮추고 성능을 확보
+- 패턴
+
+  1. point-to-point 아키텍처 패턴
+
+     ![Untitled](https://img.notionusercontent.com/s3/prod-files-secure%2F76fa3146-0981-4366-a7e0-f4a243822889%2F615d0836-9b3b-41dd-b33b-f84599ceb368%2FUntitled.png/size/w=1520?exp=1734632950&sig=--Puvmaz0CcsECya6M5npMJ70NaLEp9Ra2ZxtENpWJs)
+
+     - 하나의 마이크로 서비스가 다른 마이크로 서비스의 호출이 필요한 경우, 동기식 방식으로 직접 호출하지 않고 메시지 큐로 메시지를 보내는 방식으로 통신
+     - 메시지 큐로 보내진 메시지는 대기열에 배치
+     - 메시지 큐에서 마이크로 서비스로 직접 메시지를 전송하거나 수신하는 마이크로 서비스가 polling하는 패턴
+     - 장점: 간단한 비동기성 메시지 처리에 적합, 송신 마이크로 서비스와 수신 마이크로 서비스가 분리되어 서로에게 영향을 끼치지 않음
+     - 단점: 메시지 큐의 작업이 많아 부하가 걸릴 경우 장애를 일으킬 수 있음
+
+  2. Pub/Sub 아키텍처 패턴
+
+     ![Untitled](https://img.notionusercontent.com/s3/prod-files-secure%2F76fa3146-0981-4366-a7e0-f4a243822889%2Fafa21843-2124-4d25-aaa5-b56f5730b1cd%2FUntitled.png/size/w=1520?exp=1734632962&sig=4H-TlvyHKVOZEri3n261zaRioJZ7lZS1gp5Y1I8bDNo)
+
+     - 하나의 마이크로 서비스가 교환기를 통하여 다수의 마이크로 서비스에게 메시지를 전달
+     - 한꺼번에 많은 소비자에게 메시지를 전달하는 구조에 적합
+     - 메시지 큐에서 소비자의 정보에 대해서 알고 있으므로, 소비자와 공급자 분리 가능
+       ⇒ 서로에 대한 정보를 알 필요 X
+     - 장점: 병렬 작업, 메시지 캐싱, 트리 기반 또는 네트워크 기반의 라우팅을 통하여 기존의 클라이언트-서버 환경보다 뛰어난 확장성 제공
+     - 단점: 서비스의 호출이 많은 서비스의 경우 높은 부하로 인하여 확장성 감소
+
+# 4. Container Management
+
+- **`컨테이너 기반 어플리케이션 운영`**
+- 컨테이너는 운영체제 수준 가상화(Operating-system-level virtualization) 방식으로 운영체제 커널을 공유
+  ⇒ 하나의 OS에 여러 컨테이너가 올라감
+- 컨테이너는 프로세스를 묶어서 샌드박스 형태로 제공, 각자의 네임스페이스와 파일 시스템을 가지고 운영
+- **특징**
+  - **스케줄링**
+    - 컨테이너 클러스터 내부에서 컨테이너를 provisioning 가능
+      (쓰고 있지 않는 자원을 파악하고, 필요한 순간에 자원을 실시간으로 할당)
+  - **구성 스크립팅**
+    - 특정 어플리케이션 구성 정보를 사전에 YAML, JSON으로 스크립팅하여 이에 대한 정보를 기반으로 컨테이너를 로드 가능
+  - **모니터링**
+    - 컨테이너의 상태를 모니터링하여, 컨테이너가 다운되는 경우 새로운 컨테이너를 스핀업 가능
+  - **업그레이드와 롤백**
+    - 새로운 버전의 컨테이너 또는 컨테이너 내부에서 구동하는 어플리케이션을 배포할 때, 컨테이너 오케스트레이션은 컨테이너 클러스터 전체를 대상으로 자동 업데이트 및 롤백 처리 가능
+  - **서비스 디스커버리, 로드밸런싱**
+    - 특정 컨테이너가 어느 호스트에서 실행되는지 찾을 수 있으며, 특정 컨테이너에만 부하가 집중되는 것을 방지하기 위한 로드밸런싱 기능 존재
+  - **컨테이너 오토스케일링**
+    - 인프라 전반에 어플리케이션 로드를 고르게 분산시키기 위해 자동으로 컨테이너 확장 및 제거
+
+# 5. CI/CD Automation
+
+- 어플리케이션 개발 단계를 자동화하여, 어플리케이션을 보다 짧은 주기로 고객에게 제공하는 방법
+- 애플리케이션의 통합 및 테스트 단계에서부터 제공 및 배포에 이르는 애플리케이션의 라이프사이클 전체에 걸쳐 지속적인 자동화와 모니터링을 제공
+
+# 6. Telemetry
+
+- 실시간으로 먼 거리에서 원격으로 측정할 수 있는 기능
+- MSA에서 발생 가능한 이슈를 대비하기 위해 반드시 필요한 요소
+- Monitoring, Logging, Tracing

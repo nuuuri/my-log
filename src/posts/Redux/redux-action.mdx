@@ -1,0 +1,43 @@
+---
+title: \[Redux\] Action
+description: Redux Action
+tags:
+  - Redux
+  - Redux_Action
+date: 2024-10-07 09:18:00
+---
+
+- 애플리케이션에서 store로 보내는 **데이터 묶음** ⇒ 액션은 **객체**이다
+
+  ```tsx
+  // action 예시
+  const todoAction1 = {
+    type: 'ADD_TODO',
+    text: 'this is todo content',
+  };
+
+  // type은 일반적으로 문자영 상수로 정의한다
+  const ADD_TODO = 'ADD_TODO';
+
+  const todoAction2 = {
+    type: ADD_TODO,
+    text: 'this is todo content',
+  };
+  ```
+
+- action을 **dispatch** 하면 중앙 저장소의 데이터가 수정됨
+- **Action 생산자**
+  - action을 만드는 함수
+    ```tsx
+    const addTodo = (text: string) => {
+      return {
+        type: ADD_TODO,
+        text,
+      };
+    };
+    ```
+  - 자동으로 action을 보내주는 바인드된 action 생산자를 만들기도 함
+    ⇒ 이들은 사용하는 곳에서 해당 함수만 호출해서 사용할 수 있다
+    `tsx
+const boundAddTodo = (text: string) => dispatch(addTodo(text));
+`

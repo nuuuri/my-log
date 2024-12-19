@@ -1,0 +1,133 @@
+---
+title: Yarn Berry란?
+description: Yarn Berry
+tags:
+  - yarn_berry
+date: 2024-10-07 02:13:50
+---
+
+# 0. yarn berry란?
+
+- 2020년 1월 25일 출시된 yarn v2
+- yarn v1(yarn classic)과 달리 **Typescript로 작성되어 완전히 타입 체크**가 되어 있음
+- **Plug’n’Play 적용** ⇒ `node_modules` 대신 패키지를 캐시 폴더에 저장하고 .pnp.cjs 파일에 의존성 정보가 기록됨
+  - npm 또는 yarn classic에서는 **현재 경로부터 상위 디렉토리로 계속 이동**하며 필요한 의존성을 찾을 때까지 탐색함 ⇒ 매번 수많은 디스크 I/O를 발생
+  - yarn berry에서는 **디스크 I/O 없이** 어떤 패키지가 어떤 라이브러리에 의존하는지, 각 라이브러리는 어디에 위치하는지 알 수 있음
+    - 의존성을 설치하는 시점에서 `Dependencies Mapping Table` 같은 것을 만들고 이후에 의존성을 참조해야 할 경우, 이 table을 통해 참조할 위치를 얻음
+
+# 1. yarn berry 적용
+
+1.  yarn 버전 확인 & 업그레이드
+
+    ```bash
+    yarn -v
+
+    # 버전이 3.XX 미만일 경우 업그레이드
+    yarn set version stable
+    ```
+
+2.  node_modules 폴더 삭제
+
+    ```bash
+    rm -rf node_modules
+    ```
+
+3.  yarnrc.yml 파일에 아래 내용 추가
+
+    ```yaml
+    nodeLinker: pnp
+    pnpMode: loose
+
+    # zero install
+    enableGlobalCache: false
+    ```
+
+4.  vite의 경우, yarn dev 시 node_modules가 계속 생성되는 버그가 있다.
+    그럴 경우 아래 내용 추가
+    ```tsx
+    // vite.config.ts
+    {
+    ...,
+    cacheDir: './.vite'
+    }
+
+        // .gitignore
+        # vite cache
+        .vite
+
+        ```
+
+# 2. zero install 적용
+
+.gitignore에 아래 내용 추가
+
+```bash
+# zero install
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# non zero install
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+```
+
+# 3. 에러 처리
+
+### 3-1) Git 업로드 용량 초과 에러 발생 시
+
+Git LFS(Large File Storage)를 사용한다
+
+```bash
+brew install git-lfs
+```
+
+```bash
+git lfs install
+```
+
+- 파일 commit & push
+  ```bash
+  git lfs track 파일명
+  git add .gitattributes
+  git commit -m "커밋 메시지"
+  git push origin
+  ```
+- Git LFS 파일 pull
+  ```bash
+  # git pull을 받는 경우, 파일의 원본이 pull 받아지지 않음
+  git lfs pull
+  ```
+
+### 3-2) Typescript 에러 발생 시
+
+1. 아래 명령어를 입력
+
+   ```bash
+   yarn dlx @yarnpkg/sdks vscode
+   ```
+
+2. vscode에서 typescript 버전을 `Use Workspace Version`으로 선택
+
+### 3-3) 깨진 의존성 에러 발생 시
+
+npm, yarn classic을 마이그레이션 하는 과정에서 유령 의존성으로 인하여 에러가 발생하는 경우 발생
+
+1. 에러가 발생하는 패키지를 설치하거나
+2. yarnrc.yml에 **`packageExtensions`** 설정
+
+   ```yaml
+   packageExtensions:
+     styled-components@*:
+       dependencies:
+         react-is: '*'
+   ```
