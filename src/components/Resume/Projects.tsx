@@ -21,7 +21,7 @@ export default function ResumeProjects({
         ({ title, date, subtitle, description, skills, tasks }, idx) => (
           <ResumeContent
             key={idx}
-            className="flex flex-col gap-2 pb-5 mb-5 border-b md:p-0 only:border-none last:border-none md:border-none md:gap-8 md:flex-row">
+            className={`flex flex-col gap-2 pb-5 mb-5 border-b md:p-0 only:border-none last:border-none last:mb-0 md:border-none md:gap-8 md:flex-row ${skills ? 'md:mb-14' : ''}`}>
             <ResumeContent.Date className="md:text-right">
               {date}
             </ResumeContent.Date>

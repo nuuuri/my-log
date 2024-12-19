@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="max-w-3xl m-auto tracking-wide font-gothicA1">
+    <div className="max-w-5xl m-auto tracking-wide font-gothicA1">
       <ResumeTitle job="Frontend Engineer" name="박윤수" />
       <div className="flex flex-col justify-between gap-5 mt-5 ml-5 md:flex-row">
         <ResumeIntroduce

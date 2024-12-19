@@ -10,9 +10,9 @@ interface ResumeExperiencesProps {
 export default function ResumeExperiences({ data }: ResumeExperiencesProps) {
   return (
     <div>
-      <ResumeSubtitle>Experiences</ResumeSubtitle>
+      <ResumeSubtitle>Experience</ResumeSubtitle>
       {data.map(({ title, date, content }, idx) => (
-        <ResumeContent key={idx} className="pb-5 mb-5">
+        <ResumeContent key={idx} className="pb-5 mb-5 last:p-0">
           <div className="flex flex-col gap-2 mb-1 md:gap-8 md:flex-row">
             <ResumeContent.Date className="md:text-right">
               {date}

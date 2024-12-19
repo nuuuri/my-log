@@ -9,7 +9,7 @@ interface ResumeSkillsProps {
 export default function ResumeSkills({ data }: ResumeSkillsProps) {
   return (
     <div>
-      <ResumeSubtitle>Skills</ResumeSubtitle>
+      <ResumeSubtitle>Skill</ResumeSubtitle>
       <ul>
         {data.map(({ category, skills }, idx) => (
           <li key={idx} className="py-1 ml-3">
