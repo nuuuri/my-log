@@ -1,7 +1,9 @@
+import { ResumeSkillData } from '@/types/Resume';
+
 import ResumeSubtitle from './Subtitle';
 
 interface ResumeSkillsProps {
-  data: { category: string; skills: string }[];
+  data: ResumeSkillData[];
 }
 
 export default function ResumeSkills({ data }: ResumeSkillsProps) {
@@ -10,7 +12,7 @@ export default function ResumeSkills({ data }: ResumeSkillsProps) {
       <ResumeSubtitle>Skills</ResumeSubtitle>
       <ul>
         {data.map(({ category, skills }, idx) => (
-          <li key={idx} className="ml-2 py-0.5 font-light">
+          <li key={idx} className="py-1 ml-3">
             <span className="pr-2 font-semibold">{category} : </span>
             {skills}
           </li>

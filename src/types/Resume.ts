@@ -9,3 +9,13 @@ export interface ResumeContentData {
   skills?: string[];
   tasks?: ListData[];
 }
+
+export interface ResumeExperienceData
+  extends Pick<ResumeContentData, 'title' | 'date'> {
+  content: { position: string; date: string; tasks: string[] }[];
+}
+
+export interface ResumeSkillData {
+  category: string;
+  skills: string;
+}

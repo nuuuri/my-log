@@ -21,8 +21,8 @@ export default function ResumeProjects({
         ({ title, date, subtitle, description, skills, tasks }, idx) => (
           <ResumeContent
             key={idx}
-            className="flex flex-col gap-2 pb-5 mb-5 overflow-hidden border-b md:p-0 only:border-none last:border-none md:border-none md:gap-8 md:flex-row">
-            <ResumeContent.Date className="flex flex-row gap-1 md:items-end md:flex-col">
+            className="flex flex-col gap-2 pb-5 mb-5 border-b md:p-0 only:border-none last:border-none md:border-none md:gap-8 md:flex-row">
+            <ResumeContent.Date className="md:text-right">
               {date}
             </ResumeContent.Date>
             <div className="flex-grow">
@@ -31,7 +31,7 @@ export default function ResumeProjects({
                 <ResumeContent.Subtitle>{subtitle}</ResumeContent.Subtitle>
               )}
               {description && (
-                <ResumeContent.Description className="ml-2 my-3">
+                <ResumeContent.Description className="my-3 ml-2">
                   {description}
                 </ResumeContent.Description>
               )}

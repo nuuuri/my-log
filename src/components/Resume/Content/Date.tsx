@@ -9,7 +9,7 @@ export default function ResumeContentDate({
 }: ResumeContentDateProps) {
   return (
     <p
-      className={`flex-shrink-0 w-48 text-xl font-medium text-zinc-400 ${className}`}>
+      className={`flex-shrink-0 w-48 text-xl font-semibold text-zinc-450 ${className}`}>
       {children}
     </p>
   );
