@@ -14,8 +14,8 @@ export default async function Home() {
         {allPosts
           .sort(
             (a, b) =>
-              new Date(a.metadata.date).getDate() -
-              new Date(b.metadata.date).getDate()
+              new Date(b.metadata.date).getTime() -
+              new Date(a.metadata.date).getTime()
           )
           .map((post) => (
             <PostCard key={post.slug} post={post} />
