@@ -2,26 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --white: #fafafa; /* zinc-50 */
+  --black: #18181b; /* zinc-900 */
+  --orange: #fb923c; /* orange-400 */
+
+  --background: #ffffff;
+  --foreground: var(--black);
+  --point: var(--orange);
+}
+
+.dark {
+  --background: var(--black) !important;
+  --foreground: var(--white);
+
+  .prose {
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: #ffffff;
+    }
+
+    p,
+    ul,
+    ol,
+    a {
+      @apply text-zinc-400;
+    }
+
+    :not(pre) > code {
+      @apply bg-zinc-600;
+    }
+  }
+}
+
 @layer base {
   *,
   *::before,
   *::after {
     box-sizing: border-box;
-  }
-
-  :root {
-    --white: #fafafa; /* zinc-50 */
-    --black: #18181b; /* zinc-900 */
-    --orange: #fb923c; /* orange-400 */
-
-    --background: #ffffff;
-    --foreground: var(--black);
-    --point: var(--orange);
-  }
-
-  .dark {
-    --background: var(--black);
-    --foreground: var(--white);
   }
 
   body {
@@ -109,21 +129,6 @@
       &::after {
         display: none;
       }
-    }
-  }
-
-  .dark {
-    h1,
-    h2,
-    h3,
-    h4 {
-      color: #ffffff;
-    }
-
-    p,
-    ul,
-    ol {
-      color: #a1a1aa;
     }
   }
 
