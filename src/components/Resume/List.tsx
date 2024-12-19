@@ -22,7 +22,7 @@ export default function ResumeList({
           text && (
             <div key={idx}>
               <li
-                className={`py-0.5 last:pb-1 ${level === 1 ? 'mt-1 !font-medium text-[17px] tracking-normal dark:!text-white' : 'font-light text-[15px] tracking-tight'} ${className}`}
+                className={`py-0.5 last:pb-1 text-[${18 - level}px] ${level === 1 ? 'mt-1 !font-medium tracking-normal dark:!text-white' : 'font-light tracking-tight'} ${className}`}
                 dangerouslySetInnerHTML={{ __html: text }}></li>
               {children && <ResumeList data={children} level={level + 1} />}
             </div>
