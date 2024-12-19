@@ -1,6 +1,6 @@
-import { ResumeProjectData } from '@/types/Resume';
+import { ResumeContentData } from '@/types/Resume';
 
-export const project1: ResumeProjectData = {
+export const project1: ResumeContentData = {
   title: '2025년 AI 디지털교과서 개발',
   subtitle: '(주)티맥스알지',
   date: '2024.04 ~ 2024.09',

@@ -1,6 +1,6 @@
-import { ResumeProjectData } from '@/types/Resume';
+import { ResumeContentData } from '@/types/Resume';
 
-export const project3: ResumeProjectData = {
+export const project3: ResumeContentData = {
   title: '와플수학 교사용 서비스 개발',
   subtitle: '(주)티맥스알지',
   date: '2021.07 ~ 2021.11',

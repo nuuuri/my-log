@@ -1,15 +1,11 @@
 import { ListData } from './List';
 
-interface ResumeContentData {
+export interface ResumeContentData {
   title: string;
-  subtitle: string;
   date: string;
-}
 
-export type ResumeContentType = 'PROJECT' | 'ETC';
-
-export interface ResumeProjectData extends ResumeContentData {
-  description: string;
-  skills: string[];
-  tasks: ListData[];
+  subtitle?: string;
+  description?: string;
+  skills?: string[];
+  tasks?: ListData[];
 }

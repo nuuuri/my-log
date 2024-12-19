@@ -1,6 +1,6 @@
-import { ResumeProjectData } from '@/types/Resume';
+import { ResumeContentData } from '@/types/Resume';
 
-export const project2: ResumeProjectData = {
+export const project2: ResumeContentData = {
   title: '디지털 앱북 플랫폼 & 플레이어 개발',
   subtitle: '(주)티맥스알지',
   date: '2022.01 ~ 2024.03',

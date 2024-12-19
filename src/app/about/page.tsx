@@ -43,12 +43,48 @@ export default function AboutPage() {
           ]}
         />
       </div>
-      <ResumeProjects data={projects} />
-      {/*
-      <Skills />
-      <Experiences />
-      <ETC />
-      <Education /> */}
+      <ResumeProjects title="Project" data={projects} isFirstLevelOrdered />
+      <ResumeProjects
+        title="ETC"
+        data={[
+          {
+            title: '청년 희망이음 Problem Solving 경진대회 5차 (은상)',
+            subtitle: '고용노동부/인천광역시',
+            date: '2020.10 ~ 2020.11',
+            description:
+              '전자 붓을 활용한 영유아 색칠 공부 어플리케이션(Android)을 개발하여 은상을 수상하였습니다.',
+            tasks: [
+              {
+                text: '딥러닝을 활용한 사진 윤곽선 추출 및 윤곽선 조절 기능 개발',
+              },
+              {
+                text: 'Canvas, Paint 기반의 색칠하기 기능 개발',
+              },
+            ],
+          },
+          {
+            title: '정보처리기사 획득',
+            date: '2019.11',
+          },
+        ]}
+      />
+      <ResumeProjects
+        title="Education"
+        data={[
+          {
+            title: '인하대학교',
+            date: '2016.03 ~ 2021.02',
+            tasks: [
+              {
+                text: '정보통신공학과 학사 <span class="text-zinc-400">(2016.03 ~ 2021.02)</span>',
+              },
+              {
+                text: '정보통신공학과 제 18대 부학생회장 역임 <span class="text-zinc-400">(2018.01 ~ 2018.12)</span>',
+              },
+            ],
+          },
+        ]}
+      />
     </div>
   );
 }

@@ -1,16 +1,22 @@
-import { ResumeProjectData } from '@/types/Resume';
+import { ResumeContentData } from '@/types/Resume';
 
 import ResumeContent from './Content';
 import ResumeSubtitle from './Subtitle';
 
 interface ResumeProjectsProps {
-  data: ResumeProjectData[];
+  title: string;
+  data: ResumeContentData[];
+  isFirstLevelOrdered?: boolean;
 }
 
-export default function ResumeProjects({ data }: ResumeProjectsProps) {
+export default function ResumeProjects({
+  title,
+  data,
+  isFirstLevelOrdered = false,
+}: ResumeProjectsProps) {
   return (
     <div>
-      <ResumeSubtitle>Project</ResumeSubtitle>
+      <ResumeSubtitle>{title}</ResumeSubtitle>
       {data.map(
         ({ title, date, subtitle, description, skills, tasks }, idx) => (
           <ResumeContent
@@ -21,12 +27,23 @@ export default function ResumeProjects({ data }: ResumeProjectsProps) {
             </ResumeContent.Date>
             <div className="flex-grow">
               <ResumeContent.Title>{title}</ResumeContent.Title>
-              <ResumeContent.Subtitle>{subtitle}</ResumeContent.Subtitle>
-              <ResumeContent.Description className="ml-2 my-3">
-                {description}
-              </ResumeContent.Description>
-              <ResumeContent.Skills className="my-3 ml-2" skills={skills} />
-              <ResumeContent.Tasks isFirstLevelOrdered data={tasks} />
+              {subtitle && (
+                <ResumeContent.Subtitle>{subtitle}</ResumeContent.Subtitle>
+              )}
+              {description && (
+                <ResumeContent.Description className="ml-2 my-3">
+                  {description}
+                </ResumeContent.Description>
+              )}
+              {skills && (
+                <ResumeContent.Skills className="my-3 ml-2" skills={skills} />
+              )}
+              {tasks && (
+                <ResumeContent.Tasks
+                  data={tasks}
+                  isFirstLevelOrdered={isFirstLevelOrdered}
+                />
+              )}
             </div>
           </ResumeContent>
         )
