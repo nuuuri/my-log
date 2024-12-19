@@ -24,11 +24,19 @@
       color: #ffffff;
     }
 
+    strong {
+      @apply text-zinc-300;
+    }
+
     p,
     ul,
     ol,
     a {
       @apply text-zinc-400;
+    }
+
+    aside {
+      @apply bg-zinc-700;
     }
 
     :not(pre) > code {
@@ -120,6 +128,10 @@
 
     hr {
       margin: 1.5rem 0 !important;
+    }
+
+    aside {
+      @apply px-6 py-4 rounded-sm bg-zinc-100;
     }
 
     :not(pre) > code {
