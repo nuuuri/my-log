@@ -21,13 +21,12 @@ export default function AboutPage() {
   return (
     <div className="max-w-3xl m-auto tracking-wide font-gothicA1">
       <ResumeTitle job="Frontend Engineer" name="박윤수" />
-      <div className="flex flex-col items-center justify-between gap-2 md:flex-row md:gap-10">
+      <div className="flex flex-col justify-between gap-5 mt-5 ml-5 md:flex-row">
         <ResumeIntroduce
           data={[
-            '4년차 프론트엔드 개발자로, 프론트엔드 개발 팀장 으로서의 경험이 있습니다.',
-            '주도적으로 일하며 책임감이 강하다 라는 말을 자주 듣습니다.',
-            '사용자 중심의 서비스를 제공하기 위하여 노력합니다.',
-            '다양한 직무의 사람들과 소통하며 협업 하는 것을 즐깁니다.',
+            '사용자에게 가치를 전달하는 서비스를 만드는 프론트엔드 엔지니어가 되고 싶습니다.',
+            '업무 수행력만큼 커뮤니케이션 능력도 중요하다고 생각합니다. 다양한 직무의 사람들과 원활히 소통하며 협업하는 과정을 즐깁니다.',
+            '주도적으로 일하고 책임감이 강하다라는 말을 자주 들으며, 어떤 업무를 맡더라도 매사에 최선을 다하려 노력합니다.',
           ]}
         />
         <ResumeContact
@@ -40,7 +39,7 @@ export default function AboutPage() {
             },
             {
               text: '📝 https://nuuuri.vercel.app/',
-              link: '"https://nuuuri.vercel.app/"',
+              link: 'https://nuuuri.vercel.app/',
             },
           ]}
         />
