@@ -1,4 +1,4 @@
-import { Project } from '@/types/Project';
+import { Project } from '@/types/Resume';
 
 import { project1 } from './project1';
 import { project2 } from './project2';

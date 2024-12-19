@@ -1,4 +1,4 @@
-import { Project } from '@/types/Project';
+import { Project } from '@/types/Resume';
 
 export const project3: Project = {
   title: '와플수학 교사용 서비스 개발',

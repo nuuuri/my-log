@@ -1,4 +1,4 @@
-import { Project } from '@/types/Project';
+import { Project } from '@/types/Resume';
 
 export const project2: Project = {
   title: '디지털 앱북 플랫폼 & 플레이어 개발',

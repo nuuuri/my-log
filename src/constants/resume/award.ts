@@ -1,4 +1,4 @@
-import { Project } from '@/types/Project';
+import { Project } from '@/types/Resume';
 
 export const award: Project = {
   title: '청년 희망이음 Problem Solving 경진대회 5차 (은상)',

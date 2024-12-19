@@ -1,4 +1,4 @@
-import { Project } from '@/types/Project';
+import { Project } from '@/types/Resume';
 
 export const project1: Project = {
   title: '2025년 AI 디지털교과서 개발',

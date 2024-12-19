@@ -4,11 +4,19 @@ interface ListProps {
   className?: string;
   data: ListType[];
   level?: number;
+  type?: 'PROJECT' | 'ETC';
 }
 
-export default function List({ className, data, level = 1 }: ListProps) {
+export default function List({
+  className,
+  data,
+  level = 1,
+  type = 'ETC',
+}: ListProps) {
+  const Tag = type === 'PROJECT' && level === 1 ? 'ol' : 'ul';
+
   return (
-    <ul className={level === 1 ? 'pl-6 md:pl-8' : 'pl-6 md:pl-10'}>
+    <Tag className={level === 1 ? 'pl-6 md:pl-8' : 'pl-6 md:pl-10'}>
       {data.map(
         ({ text, children }, idx) =>
           text && (
@@ -20,6 +28,6 @@ export default function List({ className, data, level = 1 }: ListProps) {
             </div>
           )
       )}
-    </ul>
+    </Tag>
   );
 }

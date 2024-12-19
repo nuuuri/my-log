@@ -1,4 +1,4 @@
-import Project from '@/components/resume/common/Project';
+import Project from '@/components/resume/common/ResumeItem';
 import Title from '@/components/resume/common/Title';
 
 export default function Education() {

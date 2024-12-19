@@ -38,6 +38,19 @@
     color: #71717a !important;
   }
 
+  ol {
+    list-style-type: decimal;
+    padding-left: 16px;
+  }
+
+  ol ol {
+    list-style-type: lower-alpha;
+  }
+
+  ol ol ol {
+    list-style-type: lower-roman;
+  }
+
   ul {
     list-style-type: disc;
     padding-left: 16px;
