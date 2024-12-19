@@ -6,6 +6,7 @@ import { Metadata } from 'next';
 import ResumeContact from '@/components/Resume/Contact';
 import ResumeIntroduce from '@/components/Resume/Introduce';
 import ResumeProjects from '@/components/Resume/Projects';
+import ResumeSkills from '@/components/Resume/Skills';
 import ResumeTitle from '@/components/Resume/Title';
 
 import { projects } from '@/constants/resume/projects';
@@ -43,6 +44,13 @@ export default function AboutPage() {
           ]}
         />
       </div>
+      <ResumeSkills
+        data={[
+          { category: 'Language', skills: 'JavaScript, TypeScript, Python' },
+          { category: 'Frontend', skills: 'React, Next.js, Three.js' },
+          { category: 'Infra', skills: 'GitLab CI/CD, Docker, Nginx' },
+        ]}
+      />
       <ResumeProjects title="Project" data={projects} isFirstLevelOrdered />
       <ResumeProjects
         title="ETC"
