@@ -13,6 +13,8 @@ export default {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         point: 'var(--point)',
+        'zinc-450': '#898992',
+        'zinc-550': '#62626a',
       },
     },
     fontFamily: {
