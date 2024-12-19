@@ -1,0 +1,155 @@
+---
+title: Union Type, Intersection Type, ETC.
+description: Union Type, Intersection Type, ETC.
+tags:
+  - Union Type
+  - Intersection Type
+  - Type Guard
+date: 2024-08-05 13:03:00
+---
+
+- 타입스크립트는 Structural Type System을 사용함 ⇒ 이름이 달라도 **구조가 동일**하면 할당 가능
+  ```tsx
+  class Apple {
+  	getName(name: string): string {...};
+  }
+
+  class Banana{
+  	getName(name: string): string {...};
+  }
+
+  const apple: Apple = new Banana(); // OK
+  ```
+
+# Union Type
+
+- 합집합(A∪B)
+
+```tsx
+type Fruit = 'Apple' | 'Banana';
+type Drink = 'Coffee' | 'Water';
+
+type Food = Fruit | Drink;
+
+const foodA: Food = 'Apple'; // OK
+const foodB: Food = 'Coffee'; // OK
+```
+
+### Union 구별하기
+
+- Union Type은 공통된 속성에만 접근이 가능함(어느 타입이 올 지 모르니까)
+  ⇒ **`타입 가드`**를 통한 타입 한정이 필요함
+- 타입 가드 방법
+  - 🚫 객체 리터럴`{…}[item.type]`은 객체 속성을 동적으로 참조하는 것이 아니기 때문에 오류가 발생함
+  - `typeof` 키워드 사용 : 원시 타입만 가능
+    ```tsx
+    function foo(item: number| string) {
+    	if (typeof item === "number") { // item: number
+    		...
+    	}
+    	else { // item: string
+    		...
+    	}
+    }
+    ```
+  - `instance of` 키워드 사용 : 객체가 특정한 클래스에 속하는지 확인 가능
+    ```tsx
+    class TypeA {
+    	...
+    }
+
+    class TypeB {
+    	...
+    }
+
+    function foo(item: TypeA | TypeB) {
+    	if (item instanceof TypeA) { // item: TypeA
+    		...
+    	}
+    	else { // item: TypeB
+    		...
+    	}
+    }
+    ```
+  - `in` 키워드 사용
+    ```tsx
+    type TypeA = {
+    	valueA: string,
+    	...
+    }
+
+    type TypeB = {
+    	valueB: string,
+    	...
+    }
+
+    function foo(item: TypeA | TypeB) {
+    	if ("valueA" in item) { // item: TypeA
+    		...
+    	}
+    	else { // item: TypeB
+    		...
+    	}
+    }
+    ```
+  - 공통 속성 활용
+    ```tsx
+    type TypeA = {
+    	type: "A",
+    	...
+    }
+
+    type TypeB = {
+    	type: "B",
+    	...
+    }
+
+    function foo(item: TypeA | TypeB) {
+    	switch(item.type) {
+    		case "A": // item: TypeA
+    			...
+    		case "B": // item: TypeB
+    			...
+    	}
+    }
+    ```
+
+# Intersection Type
+
+- 교집합(A∩B)
+- 여러가지 타입을 하나로 결합함
+
+```tsx
+interface Person {
+  name: string;
+  age: number;
+}
+
+interface Developer {
+  skill: string;
+}
+
+type Capt = Person & Developer;
+// Capt의 타입
+{
+  name: string;
+  age: number;
+  skill: string;
+}
+
+// 🚫 주의!
+type Fruit = 'Apple' | 'Banana';
+type Drink = 'Coffee' | 'Water';
+
+type MyFavorite = 'Coffee' | 'Jelly';
+
+type MyFavoriteFruit = Fruit & MyFavorite; // never
+type MyFavoriteDrink = Drink & MyFavorite; // "Coffee"
+```
+
+- `never` 타입을 제외한 나머지는 `any`와 만나면 `any`로 바뀐다
+  ```tsx
+  type T1 = any & 1; // any
+  type T2 = any & boolean; // any
+  type T3 = any & never; // never
+  ```

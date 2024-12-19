@@ -1,0 +1,40 @@
+---
+title: 웹 서버와 WAS
+description: 웹 서버와 웹 애플리케이션 서버에 대한 설명
+tags:
+  - Web_Server
+  - Web_Application_Server
+  - WAS
+  - 웹서버
+  - 웹_서버
+date: 2023-05-26 02:19:00
+---
+
+## 1. 웹 서버 (Web Server)
+
+- HTTP 요청을 받아서 HTML 문서와 같은 웹 페이지를 반환하는 프로그램
+- `클라이언트`에게 **`정적 컨텐츠(html, css, png 등)`** 를 제공하는 서버
+- `클라이언트`의 요청을 기다리고, 요청에 대한 데이터를 만들어서 응답하는 역할
+- ex) Apache, Nginx, IIS 등
+
+## 2. WAS (Web Application Server)
+
+- **`동적 컨텐츠`** 를 제공하기 위해 만들어진 어플리케이션 서버
+- `JSP`, [`Servlet`](https://www.notion.so/Servlet-JSP-47f9ed3f2e694a49b6565fc69396025a?pvs=21) 구동 환경 제공
+- `컨테이너`, `웹 컨테이너`, `서블릿 컨테이너`라고 불림
+- ex) Tomcat 등
+
+## 3. 구조
+
+![Untitled](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fq649V%2FbtsIR1ng5Xz%2FxkgakapvVZkNOpielSnkgk%2Fimg.png)
+
+<aside>
+⚠️ **그러나 SPA의 경우,**
+
+웹 서버에서 클라이언트에게 HTML이 아닌 **데이터만을 제공** 하고, 그 데이터를 클라이언트 측의 `자바스크립트`에서 **동적으로 렌더링(Client-Side Rendering)** 하여 HTML을 만들어 내기 때문에 웹 서버는 API 서버로만 활용한다.
+
+</aside>
+
+## 4. 웹 서버와 ASP, PHP, JSP
+
+- ASP, PHP, JSP는 `웹 서버`를 개발하는 것이 아니라 웹 서버에서 동작하는 **`스크립트`** 를 개발하는 것이다.

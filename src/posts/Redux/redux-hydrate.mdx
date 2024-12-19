@@ -1,0 +1,35 @@
+---
+title: \[Redux\] HYDRATE
+description: Redux Hydrate
+tags:
+  - Redux
+  - Redux_Hydrate
+date: 2024-10-08 03:35:15
+---
+
+- Next.js의 서버 사이드에서 생성되는 redux store와 클라이언트 사이드에서 생성되는 redux store는 별개의 store이다.
+  ⇒ 두 개의 store를 합쳐주는 로직이 필요함 : **`HYDRATE`** (**next-redux-wrapper** 패키지에서 제공)
+- **Hydrate**
+  ![image.png](https://img.notionusercontent.com/s3/prod-files-secure%2Feb9bb317-cfdb-4742-af8a-a5c9f8aeb547%2Fffad8234-59ba-4b20-8dd0-8b24779a3f06%2Fimage.png/size/w=1580?exp=1734634301&sig=pfYaWrhKDt8YGGf5Q2TmTfwudq3qKSfMYYwThXXsdZA)
+  - 서버 사이드에서 생성된 정적 페이지(HTML)과 번들링 된 JS파일을 클라이언트에게 보낸 뒤, 클라이언트 단에서 HTML 코드와 JS 코드를 서로 매칭시키는 과정
+  - 서버에서 보낸 HTML에는 자바스크립트 요소가 없음
+    ⇒ 서버에서 보낸 HTML DOM 요소 위에 JS 요소를 부착함
+
+```tsx
+const reducer = (state, action) => {
+  if (action.type === HYDRATE) {
+    return {
+      ...state,
+      ...action.payload,
+    };
+  }
+  return combineReducers({
+    /* */
+  })(state, action);
+};
+```
+
+- 서버에서 store가 생성됨 ⇒ `action.payload`에 서버에서 생성한 store의 상태가 담김 ⇒ 새로운 클라이언트 측 store의 상태와 합침
+- (오해 금지) 서버에서는 클라이언트 store 값을 사용할 수 없음
+  - 클라이언트 store 값의 초기화를 위해 사용
+  - redux 개발자 왈, “[Server state is only a seed to speed up client side initial rendering, nothing more.](https://github.com/kirill-konshin/next-redux-wrapper/issues/432#issuecomment-962685072)”

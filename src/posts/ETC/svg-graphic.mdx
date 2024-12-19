@@ -1,0 +1,280 @@
+---
+title: SVG 그래픽
+description: SVG 그래픽
+tags:
+  - SVG
+  - SVG_그래픽
+date: 2023-04-23 14:17:00
+---
+
+# 0. SVG란?
+
+- **`Scalable Vector Graphics`** 의 약자
+- 2차원 벡터 그래픽을 표현하기 위한 **구조화 된 `XML 이미지 형식`의 마크업 언어**
+
+<aside>
+💡 **`벡터 기반`** 이기 때문에 기존의 `비트맵 기반`의 포맷과 달리 사이즈가 늘어나도 사진이 깨지지 않고 **모든 해상도에서 자유롭게 활용**할 수 있다.
+
+또한, 기존 이미지 포맷(ex. `PNG`, `JPEG`)보다 파일 크기가 작기 때문에 **웹 성능이 크게 향상될 수 있다.**
+
+</aside>
+
+# 1. 기본 도형 그리기
+
+## 1.1. 사각형
+
+```jsx
+<svg>
+  <rect
+    width="480"
+    height="240"
+    fill="#3d87fb" // default: 'black'
+    x="20"
+    y="40" // 뷰포트 내부 특정 지점으로 위치 이동
+    rx="20"
+    ry="20" // 둥근 테두리 속성 설정
+  />
+</svg>
+```
+
+![사각형](https://img.notionusercontent.com/s3/prod-files-secure%2F8e61f098-260b-40c4-a9fa-ac8070b87872%2F48b9b15e-0344-49dc-860f-0f478ca666c8%2FUntitled.png/size/w=1080?exp=1734630743&sig=n65630KqEtVa3WY4MoxTWPHNKHHl_KadgkTYyi7tR-c)
+
+## 1.2. 원
+
+```jsx
+<svg>
+  <circle
+    cx="200"
+    cy="200"
+    r="50"
+    fill="none"
+    stroke="#f9b10a"
+    stroke-width="14" // 테두리 설정
+  />
+</svg>
+```
+
+![원](https://img.notionusercontent.com/s3/prod-files-secure%2F8e61f098-260b-40c4-a9fa-ac8070b87872%2Fc778b974-eb70-430d-a35e-351c5e2a9352%2FUntitled.png/size/w=1140?exp=1734630764&sig=l4Uc66MllXYTLXUOZdPZUFE8BANM5mPkcDW4fKnb6uQ)
+
+## 1.3. 타원
+
+```jsx
+<svg>
+  <ellipse
+    cx="200"
+    cy="200"
+    rx="50"
+    ry="100"
+    fill="#dd3742"
+    stroke="#b13138"
+    stroke-width="8"
+  />
+</svg>
+```
+
+![타원](https://img.notionusercontent.com/s3/prod-files-secure%2F8e61f098-260b-40c4-a9fa-ac8070b87872%2Fc8b70efc-c09a-42f8-898e-6a0dd270eac8%2FUntitled.png/size/w=1100?exp=1734630780&sig=LzpM0bOCsh2HHBsLH3czq6Ctb-ZkVx8QxcObs5fIZN4)
+
+## 1.4. 직선(Line)
+
+```jsx
+<svg>
+  <line
+    x1="440"
+    y1="40" // 시작점
+    x2="120"
+    y2="200" // 끝점
+    stroke-width="5"
+    stroke="#26b2a2"
+  />
+</svg>
+```
+
+![직선](https://img.notionusercontent.com/s3/prod-files-secure%2F8e61f098-260b-40c4-a9fa-ac8070b87872%2F9a9b3b19-0e00-4ce0-8fd6-9a6f58c8dbb5%2FUntitled.png/size/w=1600?exp=1734630799&sig=sYImrUclWltnxkoScFGhvSS-Zc2FUNY9A5i5mTq1gQU)
+
+## 1.5. 폴리라인(Polyline)
+
+- 2개 이상의 점들이 직선으로 연결된 도형
+- 각 점들의 위치(`points`) 속성은 공백으로 구분됨 (ex. `x1,y1 x2,y2 x3,y3`)
+
+```jsx
+<svg>
+  <polyline
+    points="0,0 40,40 40,80 80,80 80,120 120,120 160,160"
+    fill="none"
+    stroke="#b38fac"
+    stroke-width="6"
+  />
+</svg>
+```
+
+![폴리라인](https://img.notionusercontent.com/s3/prod-files-secure%2F8e61f098-260b-40c4-a9fa-ac8070b87872%2Fb2da6433-84e6-4c44-b936-1996fd8052e9%2FUntitled.png/size/w=1050?exp=1734630831&sig=Yz3_nJRjkdPYDeg4MBJHQkUiFxmMwDrDPE01nnz73X8)
+
+## 1.6. 다각형(Polygon)
+
+- 3개 이상의 점들이 연결된 다각형
+
+```jsx
+<svg>
+  <polygon
+    points="50,5 100,5 125,30 125,80 100,105 50,105 25,80 25,30"
+    fill="#4b6eec"
+  />
+</svg>
+```
+
+![다각형](https://img.notionusercontent.com/s3/prod-files-secure%2F8e61f098-260b-40c4-a9fa-ac8070b87872%2F895e6843-3016-4e71-b93a-aabfd2bc02f2%2FUntitled.png/size/w=1040?exp=1734630858&sig=aOe7JDWNcaBsLPbT6z1j8QPi4DvPSRUiMHHaQbfGOJE)
+
+# 2. Path 도형 그리기
+
+## 2.1. 패스 데이터(Paths data)
+
+- **`<path>`** 도형은 데이터(`d`) 속성을 통해 복잡한 도형을 그릴 수 있음
+- 기본 도형에서 사용한 속성(ex. `fill`, `strock` 등) 설정 가능
+- **`숫자`**와 **`영문 이니셜**(명령어)`
+
+```jsx
+// 레몬 그리기 예시
+<svg>
+  <path
+    d="M248.761,92c0,9.801-7.93,17.731-17.71,17.731c-0.319,0-0.617,0-0.935-0.021c-10.035,37.291-51.174,65.206-100.414,65.206 c-49.261,0-90.443-27.979-100.435-65.334c-0.765,0.106-1.531,0.149-2.317,0.149c-9.78,0-17.71-7.93-17.71-17.731 c0-9.78,7.93-17.71,17.71-17.71c0.787,0,1.552,0.042,2.317,0.149C39.238,37.084,80.419,9.083,129.702,9.083c49.24,0,90.379,27.937,100.414,65.228h0.021c0.298-0.021,0.617-0.021,0.914-0.021C240.831,74.29,248.761,82.22,248.761,92z"
+    fill="#f9ef21"
+    stroke="#f9cf01"
+    stroke-width="7"
+    stroke-linejoin="round"
+  />
+</svg>
+```
+
+![레몬](https://img.notionusercontent.com/s3/prod-files-secure%2F8e61f098-260b-40c4-a9fa-ac8070b87872%2Fa687d482-2015-4b5b-b386-763d4a98c486%2FUntitled.png/size/w=1280?exp=1734630878&sig=AqEaJ7US7vvBLj0S1pTw--7Aw-ugVITHB1VpPRSishM)
+
+<aside>
+⚠️ *굳이 머리 속으로 상상해가며 복잡한 패스를 그릴 필요는 없다!* 
+복잡한 도형은 Adobe Illustrator와 같은 **`벡터 드로잉 도구`**를 사용하자
+
+</aside>
+
+---
+
+## 2.2. 이동 (moveTo, `M x y`, `m dx dy`)
+
+- path를 그리기 시작할 위치로 이동
+- 대문자 **`M`**은 **절대 좌표**, 소문자 **`m`**은 **상대 좌표**를 의미
+
+<aside>
+💡 이미 다른 좌표에 있었더라도 **두 점 사이에 path가 그려지지는 않음** (Just 이동만!)
+
+</aside>
+
+```jsx
+// 하위코드 전부 동일하게 동작
+<path d="**M**10,10" />
+<path d="**M** 10,10" />
+<path d="**M** 10 10" />
+```
+
+## 2.3. 패스 닫기 (closepath, `Z`, `z`)
+
+- path 그리기 종료
+- `closepath` 명령 뒤에 `moveTo` 명령이 있을 경우, 이전 path 그리기 종료 후 새로운 path 시작점으로 이동
+- 대소문자 역할 동일
+
+```jsx
+<path d="M10,10**z**" />
+<path d="M ****10,10 **z**" />
+<path d="M ****10 10 **z**" />
+```
+
+## 2.4. 선 그리기(lineTo)
+
+- 대문자는 **절대 좌표**, 소문자는 **상대 좌표**를 의미
+  ### 1. 직선 (`L x y`, `l dx dy`)
+  - 현재 점에서 다음 점까지 직선을 그림
+  ```jsx
+  <path d="M 50 50 **L 200 100** Z" stroke="orange" stroke-width="5" />
+  ```
+  ### 2. 수평선 (`H x`, `h dx`)
+  - 현재 점에서 수평선을 그림
+  ```jsx
+  <path d="M ****10 10 **H 100** z" />
+  ```
+  ### 3. 수직선 (`V y`, `v dy`)
+  - 현재 점에서 수직선을 그림
+  ```jsx
+  <path d="M 30 30 **V 100** z" />
+  ```
+
+## 2.5. 커브 그리기 (curve)
+
+### 2.5.1. Quadratic Bézier (`Q`, `q`, `T`, `t`)
+
+- 2차 베지어 곡선
+- 하나의 제어점
+- **`Q x1 y1, x y`, `q dx1 dy1, dx dy`**
+- **`T x y`, `t dx dy`
+  : 2차 베지어 곡선 Q를 연결하는 단축 명령어**
+  이전에 사용한 제어점으로부터 새로운 제어점을 자동으로 만듦
+
+```jsx
+<path d="M50,300 **Q125,350 200,300**" />
+<path d="M50,350 **Q125,400 200,350** **T300,350**" /> // 베지어 곡선 이어그리기
+```
+
+### 2.5.2. Cubic Bézier (`C`, `c`, `S`, `s`)
+
+- 3차 베지어 곡선
+- 두 개의 제어점이 시작점과 끝점의 방향을 결정
+- **`C x1 y1, x2 y2, x y`, `c dx1 dy1, dx2 dy2, dx dy`**
+- **`S x2 y2, x y`, `s dx2 dy2, dx dy` : 대칭성이 있는 곡선**
+
+```jsx
+<path d="M50,200 **C100,250 150,150 200,200**z" />
+<path d="M50,250 **C100,300 150,200 200,250** **S250,200 300,250**z" />
+<path d="M10 80 **C 40 10, 65 10, 95 80** **S 150 150, 180 80**"/>
+```
+
+### 2.5.3. Elliptical arc (`A`, `a`)
+
+- 많은 파라미터를 받아서 사선을 그림
+- **`A rx ry x축_회전각 큰_호_플래그 쓸기_방향_플래그 x y`**
+- **`a rx ry x축_회전각 큰_호_플래그 쓸기_방향_플래그 dx dy`**
+
+```jsx
+<svg>
+  <path
+    d="M105,20 **a20,20 0 1,1 50,25**"
+    fill="none"
+    stroke="#4286f0"
+    stroke-width="8"
+  />
+</svg>
+```
+
+---
+
+## 📝 레몬 그리기 예시 정리
+
+```jsx
+<svg>
+  <path
+    d="M 248.761,92
+			c 0,9.801 -7.93,17.731 -17.71,17.731
+			c -0.319,0 -0.617,0 -0.935,-0.021
+			c -10.035,37.291 -51.174,65.206 -100.414,65.206 
+			c -49.261,0 -90.443-27.979 -100.435,-65.334
+			c -0.765,0.106 -1.531,0.149 -2.317,0.149
+			c -9.78,0 -17.71,-7.93 -17.71,-17.731 
+			c 0,-9.78 7.93,-17.71 17.71,-17.71
+			c 0.787,0 1.552,0.042 2.317,0.149
+			C 39.238,37.084 80.419,9.083 129.702,9.083
+			c 49.24,0 90.379,27.937 100.414,65.228
+			h 0.021
+			c 0.298,0.021 0.617,-0.021 0.914,-0.021
+			C 240.831,74.29 248.761,82.22 248.761,92
+			z"
+    fill="#f9ef21"
+    stroke="#f9cf01"
+    stroke-width="7"
+    stroke-linejoin="round"
+  />
+</svg>
+```

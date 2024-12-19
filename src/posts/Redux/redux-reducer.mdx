@@ -1,0 +1,50 @@
+---
+title: \[Redux\] Reducer
+description:
+tags:
+  - Redux
+  - Redux_Reducer
+  - 리듀서
+date: 2024-10-07 09:19:00
+---
+
+- redux에서 애플리케이션의 모든 상태는 하나의 객체에 저장됨
+  - action이 변경될 때마다 객체의 변경 상태 기록됨 → 버그 잡을 때 매우 편함
+- reducer는 action을 처리하는 부분으로, **이전 상태와 action을 받아서 다음 상태를 반환**하는 순수 함수이다.
+  ```tsx
+  const TodoReducer = (state, action) => {
+    switch (action.type) {
+      case ADD_TODO:
+        return { ...state, text: action.text };
+      default:
+        return state;
+    }
+  };
+  ```
+- reducer에서 값의 변경이 일어날 때 기존의 state를 복사한 **새로운 state 객체**를 반환함
+- 여러 reducer 조각을 합친 하나의 메인 리듀서를 생성할 수 있다
+  ```tsx
+  const TodoReducer = (state, action) => {
+    //
+  };
+
+  const UserReducer = (state, action) => {
+    //
+  };
+
+  / *
+  메인 리듀서
+  */
+  const RootReducer = (state, action) => {
+    return {
+      todo: TodoReducer(state.todo, action),
+      user: UserReducer(state.user, action),
+    };
+  };
+
+  // combineReducers()를 사용하는 경우
+  const RootReducer = combineReducers({
+    todo: TodoReducer,
+    user: UserReducer
+  });
+  ```
