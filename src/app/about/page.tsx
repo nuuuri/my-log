@@ -56,6 +56,7 @@ export default function AboutPage() {
           {
             title: '(주)티맥스알지',
             date: '2021.06 ~ 2024.10',
+            careerPeriod: '총 3년 5개월',
             content: [
               {
                 position: '연구본부/팀장',
