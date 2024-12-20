@@ -1,0 +1,18 @@
+name: Bug Report Template
+description: 버그가 발생했을 때 사용하는 템플릿
+title: "[BUG]: "
+labels: ["bug"]
+
+body: 
+  - type: textarea
+    attributes:
+      label: 📄 설명
+      description: 버그 내용에 대하여 설명해주세요.
+      placeholder: 자세히 적을수록 좋습니다.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 🙋🏻 참고 자료
+      description: 참고 자료가 있다면 작성해주세요.
+      placeholder: 자세히 적을수록 좋습니다.
