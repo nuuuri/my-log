@@ -1,5 +1,7 @@
 import { ResumeExperienceData } from '@/types/Resume';
 
+import Tag from '../Tag';
+
 import ResumeContent from './Content';
 import ResumeSubtitle from './Subtitle';
 
@@ -11,13 +13,16 @@ export default function ResumeExperiences({ data }: ResumeExperiencesProps) {
   return (
     <div>
       <ResumeSubtitle>Experience</ResumeSubtitle>
-      {data.map(({ title, date, content }, idx) => (
+      {data.map(({ title, date, careerPeriod, content }, idx) => (
         <ResumeContent key={idx} className="pb-5 mb-5 last:p-0">
           <div className="flex flex-col gap-2 mb-1 md:gap-8 md:flex-row">
             <ResumeContent.Date className="md:text-right">
               {date}
             </ResumeContent.Date>
             <ResumeContent.Title>{title}</ResumeContent.Title>
+            <Tag className="mt-0.5 -ml-6 !py-1 text-[15px] bg-zinc-450">
+              {careerPeriod}
+            </Tag>
           </div>
           {content.map(({ position, date: positionDate, tasks }, idx) => (
             <div

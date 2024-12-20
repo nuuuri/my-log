@@ -12,6 +12,7 @@ export interface ResumeContentData {
 
 export interface ResumeExperienceData
   extends Pick<ResumeContentData, 'title' | 'date'> {
+  careerPeriod: string;
   content: { position: string; date: string; tasks: string[] }[];
 }
 
