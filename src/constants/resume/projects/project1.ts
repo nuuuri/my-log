@@ -10,7 +10,8 @@ export const project1: ResumeContentData = {
     'React',
     'TypeScript',
     'MobX',
-    'styled-components',
+    'Emotion',
+    'Storybook',
     'GAIA(사내 개발 프레임워크)',
   ],
   tasks: [

@@ -8,6 +8,7 @@ export const project2: ResumeContentData = {
     '디지털 앱북을 제작 및 배포할 수 있는 플랫폼과 다양한 뷰어 기능을 포함한 플레이어를 개발하였습니다. <br/>2023 에듀테크 코리아 페어에 참가하여 참여자들이 직접 플레이어 기능을 체험할 수 있도록 부스 시연을 진행하였습니다.',
   skills: [
     'React',
+    'Vite',
     'TypeScript',
     'MobX',
     'styled-components',

@@ -6,7 +6,7 @@ export const project3: ResumeContentData = {
   date: '2022.02 ~ 2022.04',
   description:
     '에세이 자동 채점(AES), 문법 오류 교정(GEC) AI 기술을 기반으로 주제에 따른 서술형 에세이를 자동으로 채점 및 평가하는 서비스를 개발하였습니다.',
-  skills: ['React', 'TypeScript', 'MobX', 'styled-components'],
+  skills: ['React', 'Vite', 'TypeScript', 'MobX', 'styled-components'],
   tasks: [
     {
       text: '대시보드 서비스 설계 및 개발',
