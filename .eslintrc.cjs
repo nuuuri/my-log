@@ -98,37 +98,22 @@ module.exports = {
             position: 'before',
           },
           {
-            pattern: '@/components/*',
+            pattern: '{@/styles, @/styles/*}',
             group: 'internal',
             position: 'after',
           },
           {
-            pattern: '{@/constants/*,@/constants/*/*}',
+            pattern: '@/{components/*,hooks,utils}',
             group: 'internal',
             position: 'after',
           },
           {
-            pattern: '@/stores/*',
+            pattern: '@/features/*',
             group: 'internal',
             position: 'after',
           },
           {
-            pattern: '@/styles/*',
-            group: 'internal',
-            position: 'after',
-          },
-          {
-            pattern: '@/types/*',
-            group: 'internal',
-            position: 'after',
-          },
-          {
-            pattern: '@/utils/*',
-            group: 'internal',
-            position: 'after',
-          },
-          {
-            pattern: '@/posts/*',
+            pattern: '@/mdx/*',
             group: 'internal',
             position: 'after',
           },

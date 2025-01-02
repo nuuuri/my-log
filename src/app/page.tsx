@@ -1,26 +1,17 @@
-import PostCard from '@/components/PostCard';
+import { classNames } from '@/utils';
 
-import { getAllPostsMetadata } from '@/utils/postUtils';
+import { PostList } from '@/features/post';
 
-export default async function Home() {
-  const allPosts = await getAllPostsMetadata();
-
+export default function Home() {
   return (
     <div className="max-w-3xl m-auto">
-      <div className="mb-5 text-2xl font-bold tracking-widest text-point font-nanumGothic">
+      <div
+        className={classNames(
+          'mb-5 text-2xl font-bold tracking-widest text-point font-nanumGothic'
+        )}>
         전체글
       </div>
-      <div>
-        {allPosts
-          .sort(
-            (a, b) =>
-              new Date(b.metadata.date).getTime() -
-              new Date(a.metadata.date).getTime()
-          )
-          .map((post) => (
-            <PostCard key={post.slug} post={post} />
-          ))}
-      </div>
+      <PostList />
     </div>
   );
 }
