@@ -6,3 +6,4 @@ export * from './constants/educations-data';
 
 export { default as Title } from './components/title';
 export { Content, ExperienceContent } from './components/content';
+export { default as Contact } from './components/contact';

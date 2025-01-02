@@ -1,4 +1,8 @@
+import { contactData } from '@/features/resume/constants/contact-data';
+import { introduceData } from '@/features/resume/constants/introduce-data';
+
 import {
+  Contact,
   Content,
   educationsData,
   etcData,
@@ -29,6 +33,17 @@ export default function About() {
 
   return (
     <div className="max-w-5xl m-auto tracking-wide font-gothicA1">
+      <h1 className="mb-1 text-4xl font-bold tracking-widest">박윤수</h1>
+      <h3 className="ml-[2px] font-medium text-2xl">Frontend Engineer</h3>
+      <div className="flex flex-col justify-between gap-5 mt-5 ml-5 md:flex-row">
+        <ul className="break-keep">
+          {introduceData.map((text, idx) => (
+            <li key={idx}>{text}</li>
+          ))}
+        </ul>
+        <Contact data={contactData} />
+      </div>
+
       <Title>skill</Title>
       <ul>
         {skillsData.map(({ category, skills }, idx) => (
