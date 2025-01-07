@@ -13,7 +13,7 @@ date: 2023-02-13 03:25:19
 - `인터프리터`의 확장성을 위해 만들어짐
 - `바이트 코드`를 사용하여 **하드웨어의 의존성을 줄임**
 
-![Untitled](https://img.notionusercontent.com/s3/prod-files-secure%2F8e61f098-260b-40c4-a9fa-ac8070b87872%2Fd62150df-ac76-4d27-811b-8f739cdab660%2FUntitled.png/size/w=580?exp=1734633656&sig=y-INEexI9ltsQJ6Arqlggo3SsCQ5gW6mPqdurZXUzuU)
+![250108-115239](/mdx/jit-compiler/250108-115239.png)
 
 - 중간 언어를 사용하지 않는다면 왼쪽 그림처럼 각각의 하드웨어에 적합한 모든 컴파일링을 진행하여햐 함
 - 중간 언어를 사용할 경우 오른쪽 그림처럼 다른 언어에 대한 컴파일러 B를 새롭게 개발하는 상황이 왔을 때
@@ -21,7 +21,7 @@ date: 2023-02-13 03:25:19
 
 # JIT 컴파일러 (Just-In-Time Compiler)
 
-![Untitled](https://img.notionusercontent.com/s3/prod-files-secure%2F8e61f098-260b-40c4-a9fa-ac8070b87872%2F5ceeada7-f3c0-4a44-a9f3-4c77e041d335%2FUntitled.png/size/w=770?exp=1734633684&sig=le7jCt6tNeuD5V-dHFcPXBVrp7bDUPibwBT1ddFO9OM)
+![250108-115310](/mdx/jit-compiler/250108-115310.png)
 
 - 소스 코드를 파싱하여 `중간 언어 (IR)`인 `바이트 코드` 형태로 변환
   → `인터프리터 모드`라면 `바이트 코드`를 하나씩 읽어가며 동작 수행 / `JIT 모드`라면 생성된 `바이트 코드`를 기반으로 `네이티브 코드`로 컴파일하여 수행

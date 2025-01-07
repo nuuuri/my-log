@@ -8,7 +8,7 @@ tags:
 date: 2023-08-22 22:38:00
 ---
 
-![Untitled](https://img.notionusercontent.com/s3/prod-files-secure%2F76fa3146-0981-4366-a7e0-f4a243822889%2F88e18c03-8417-4476-a92d-381974d99e87%2FUntitled.png/size/w=1150?exp=1734632875&sig=rseIcQVbOg0xo64AiHkD9SNlJfRcFe96ELQ1pDdosNM)
+![250108-115425](/mdx/msa-architecture/250108-115425.png)
 
 # 1. External Gateway
 
@@ -17,7 +17,7 @@ date: 2023-08-22 22:38:00
 
 ## 1-1. **API Gateway**
 
-![Untitled](https://img.notionusercontent.com/s3/prod-files-secure%2F76fa3146-0981-4366-a7e0-f4a243822889%2Fe233e0ce-dd2d-4613-80a8-2c3779313ad8%2FUntitled.png/size/w=1250?exp=1734632892&sig=myFwm-NoqZpoSWktBlwStnamWohvodki5ejDFw6YI5M)
+![250108-115615](/mdx/msa-architecture/250108-115615.png)
 
 - **`서버의 앞에서 모든 API 호출을 받아 인증 후에 적절한 서비스에 라우팅`**
 - **필요성**
@@ -60,11 +60,11 @@ date: 2023-08-22 22:38:00
   4. 보안 기능 강화(TLS, 암호화, 인증 및 권한 부여)
   5. 서비스 간 계층에서 계측 정보를 제공하는 매트릭
 - **구조**
-  ![Untitled](https://img.notionusercontent.com/s3/prod-files-secure%2F76fa3146-0981-4366-a7e0-f4a243822889%2F42394b08-1281-4b47-8e0b-ee6a08e442c1%2FUntitled.png/size/w=760?exp=1734632922&sig=CpEMN-xk27sqMwo5zxjKlBAxOSYHOySec1r5LbM6KSM)
+  ![250108-115506](/mdx/msa-architecture/250108-115506.png)
   - 기존의 서비스 아키텍처에서의 호출은 위와 같이 직접 호출
   - Service Mesh에서의 호출은 **`서비스에 딸린 Proxy를 통해 이루어짐`**
     - 기존 TCP 기반의 proxy로는 한계가 있어 sidecar로 배치된 경량화되고 L7 계층 기반의 proxy 사용
-      ![Untitled](https://img.notionusercontent.com/s3/prod-files-secure%2F76fa3146-0981-4366-a7e0-f4a243822889%2Fc362fb80-94a3-4cbf-b627-78ff4f1c2bbd%2FUntitled.png/size/w=1410?exp=1734632935&sig=yLBqiN8h5gs0XZeAbNsHy6r8yaYDM_XGtQs1vUKciG0)
+      ![250108-115520](/mdx/msa-architecture/250108-115520.png)
   - Control Plain
     - 트래픽을 제어하는 정책 및 구성에 따라 proxy에게 설정값을 전달하고 관리하는 컨트롤러 역할
   - Data Plain
@@ -112,7 +112,7 @@ date: 2023-08-22 22:38:00
 
   1. point-to-point 아키텍처 패턴
 
-     ![Untitled](https://img.notionusercontent.com/s3/prod-files-secure%2F76fa3146-0981-4366-a7e0-f4a243822889%2F615d0836-9b3b-41dd-b33b-f84599ceb368%2FUntitled.png/size/w=1520?exp=1734632950&sig=--Puvmaz0CcsECya6M5npMJ70NaLEp9Ra2ZxtENpWJs)
+     ![250108-115659](/mdx/msa-architecture/250108-115659.png)
 
      - 하나의 마이크로 서비스가 다른 마이크로 서비스의 호출이 필요한 경우, 동기식 방식으로 직접 호출하지 않고 메시지 큐로 메시지를 보내는 방식으로 통신
      - 메시지 큐로 보내진 메시지는 대기열에 배치
@@ -122,7 +122,7 @@ date: 2023-08-22 22:38:00
 
   2. Pub/Sub 아키텍처 패턴
 
-     ![Untitled](https://img.notionusercontent.com/s3/prod-files-secure%2F76fa3146-0981-4366-a7e0-f4a243822889%2Fafa21843-2124-4d25-aaa5-b56f5730b1cd%2FUntitled.png/size/w=1520?exp=1734632962&sig=4H-TlvyHKVOZEri3n261zaRioJZ7lZS1gp5Y1I8bDNo)
+     ![250108-115713](/mdx/msa-architecture/250108-115713.png)
 
      - 하나의 마이크로 서비스가 교환기를 통하여 다수의 마이크로 서비스에게 메시지를 전달
      - 한꺼번에 많은 소비자에게 메시지를 전달하는 구조에 적합

@@ -10,7 +10,7 @@ date: 2024-10-08 03:35:15
 - Next.js의 서버 사이드에서 생성되는 redux store와 클라이언트 사이드에서 생성되는 redux store는 별개의 store이다.
   ⇒ 두 개의 store를 합쳐주는 로직이 필요함 : **`HYDRATE`** (**next-redux-wrapper** 패키지에서 제공)
 - **Hydrate**
-  ![image.png](https://img.notionusercontent.com/s3/prod-files-secure%2Feb9bb317-cfdb-4742-af8a-a5c9f8aeb547%2Fffad8234-59ba-4b20-8dd0-8b24779a3f06%2Fimage.png/size/w=1580?exp=1734634301&sig=pfYaWrhKDt8YGGf5Q2TmTfwudq3qKSfMYYwThXXsdZA)
+  ![250107-203110](/mdx/redux-hydrate/250107-203110.png)
   - 서버 사이드에서 생성된 정적 페이지(HTML)과 번들링 된 JS파일을 클라이언트에게 보낸 뒤, 클라이언트 단에서 HTML 코드와 JS 코드를 서로 매칭시키는 과정
   - 서버에서 보낸 HTML에는 자바스크립트 요소가 없음
     ⇒ 서버에서 보낸 HTML DOM 요소 위에 JS 요소를 부착함
