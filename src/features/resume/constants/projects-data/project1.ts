@@ -3,7 +3,7 @@ import { ResumeContent } from '../../model/resume-type';
 export const project1: ResumeContent = {
   title: '2025년 AI 디지털교과서 개발',
   subtitle: '(주)티맥스알지',
-  date: '2023.04 ~ 2024.09',
+  date: '2024.04 ~ 2024.09',
   description:
     '2025년 도입되는 AI 디지털교과서의 영어, 수학 평가지 문항 콘텐츠를 개발하였습니다.<br/>발행사와 SI업체 등 대규모 협업하여 수행하였으며, 약 80,000여개의 문항 콘텐츠 앱을 생산하였습니다.',
   skills: [
