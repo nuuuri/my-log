@@ -6,7 +6,13 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 
 import '@/styles/globals.css';
-import { gothicA1, nanumGothic, notosans, poppins, roboto } from '@/styles';
+import {
+  gothicA1,
+  nanumGothic,
+  notosans,
+  poppins,
+  roboto,
+} from '@/styles/fonts';
 
 import { FloatingButton } from '@/components/floating-button';
 import { Header } from '@/components/header';
