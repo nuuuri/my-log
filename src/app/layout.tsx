@@ -6,13 +6,7 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 
 import '@/styles/globals.css';
-import {
-  gothicA1,
-  nanumGothic,
-  notosans,
-  poppins,
-  roboto,
-} from '@/styles/fonts';
+import { gothicA1, poppins } from '@/styles/fonts';
 
 import { FloatingButton } from '@/components/floating-button';
 import { Header } from '@/components/header';
@@ -37,11 +31,8 @@ export default function RootLayout({
       <body
         className={classNames(
           'min-h-screen bg-background text-foreground antialiased',
-          notosans.className,
-          poppins.variable,
-          roboto.variable,
-          nanumGothic.variable,
-          gothicA1.variable
+          gothicA1.className,
+          poppins.variable
         )}>
         <ThemeProvider attribute="class">
           <Header />

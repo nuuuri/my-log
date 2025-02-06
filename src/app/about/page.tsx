@@ -34,7 +34,7 @@ export default function About() {
   ];
 
   return (
-    <div className="max-w-5xl m-auto tracking-wide font-gothicA1">
+    <div className="max-w-5xl m-auto tracking-wide">
       <h1 className="mb-1 text-4xl font-bold tracking-widest">박윤수</h1>
       <h3 className="ml-[2px] font-medium text-2xl">Frontend Engineer</h3>
       <div className="flex flex-col justify-between gap-5 mt-5 ml-5 md:flex-row">
