@@ -1,3 +1,5 @@
+import { Fragment } from 'react';
+
 import { contactData } from '@/features/resume/constants/contact-data';
 import { introduceData } from '@/features/resume/constants/introduce-data';
 
@@ -62,14 +64,14 @@ export default function About() {
       </div>
 
       {contentData.map(({ title, data, options }) => (
-        <>
+        <Fragment key={title}>
           <Title>{title}</Title>
           <div>
             {data.map((data) => (
               <Content key={data.title} {...options} {...data} />
             ))}
           </div>
-        </>
+        </Fragment>
       ))}
     </div>
   );
